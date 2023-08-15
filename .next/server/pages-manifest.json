@@ -4,7 +4,7 @@
   "/_document": "pages/_document.js",
   "/about": "pages/about.js",
   "/": "pages/index.js",
+  "/dashboard": "pages/dashboard.js",
   "/interval": "pages/interval.js",
-  "/scale": "pages/scale.js",
-  "/dashboard": "pages/dashboard.js"
+  "/scale": "pages/scale.js"
 }
