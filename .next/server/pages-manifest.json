@@ -3,9 +3,10 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/scale": "pages/scale.js",
-  "/about": "pages/about.js",
   "/arpeggio": "pages/arpeggio.js",
+  "/about": "pages/about.js",
   "/": "pages/index.js",
+  "/register": "pages/register.js",
   "/interval": "pages/interval.js",
   "/login": "pages/login.js"
 }
