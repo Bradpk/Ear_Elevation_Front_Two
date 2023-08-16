@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Page() {
   return (
-    <div>
+    <div className={styles.all}>
        <Navbar />
     <div className={styles.container}>
       <Image
