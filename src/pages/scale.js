@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
-import styles from './scale.module.css';
+import styles from "../styles/scale.module.css"
 
 const ScaleGenerator = () => {
     const [generatedScale, setGeneratedScale] = useState('');

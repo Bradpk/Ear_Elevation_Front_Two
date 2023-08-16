@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
-import styles from './interval.module.css'; 
+import styles from '../styles/interval.module.css'; 
 
 const IntervalGenerator = () => {
     const [generatedInterval, setGeneratedInterval] = useState('');

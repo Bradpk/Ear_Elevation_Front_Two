@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useGlobalState } from '../../context/GlobalState';
 import authService from '../../services/auth.service';
+// import Navbar from "../components/navbar";
 import jwtDecode from 'jwt-decode';
 import Header from '../../components/Header';
 
@@ -32,6 +33,7 @@ function Page() {
 
     return (
         <div>
+           {/* <Navbar /> */}
             <Header />
             <div className='flex'>
                 <form

@@ -3,7 +3,9 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/interval": "pages/interval.js",
-  "/arpeggio": "pages/arpeggio.js",
   "/scale": "pages/scale.js",
+  "/arpeggio": "pages/arpeggio.js",
+  "/about": "pages/about.js",
+  "/login": "pages/login.js",
   "/": "pages/index.js"
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
-import styles from './arpeggio.module.css';
+import styles from '../styles/arpeggio.module.css';
 
 const ArpeggioGenerator = () => {
     const [generatedArpeggio, setGeneratedArpeggio] = useState('');

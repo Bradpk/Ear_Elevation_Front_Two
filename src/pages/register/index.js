@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AuthService from "../../services/auth.service";
 import { useRouter } from "next/navigation";
 import { useGlobalState } from "../../context/GlobalState";
+// import Navbar from "../components/navbar";
 
 function Register() {
   const [state, dispatch] = useGlobalState();
@@ -33,6 +34,7 @@ function Register() {
 
   return (
     <div className="w-screen h-screen">
+      {/* <Navbar /> */}
       <div className="flex">
         <form className="mx-auto border-2 bg-mtgray" onSubmit={handleRegister}>
           <div className="flex justify-between m-2 items-center space-x-2">

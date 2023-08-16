@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Navbar from "../components/navbar";
-import Image from 'next/image';
+import Image from "next/image";
+import styles from "../styles/scale.module.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function Page() {
