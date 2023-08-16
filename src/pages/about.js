@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Navbar from "../components/navbar";
+import styles from '../styles/about.module.css'; 
 
 export default function About() {
     return (
         <div>
             <Navbar />
-            <h1>About</h1>
+            <div className={styles.container}>
             <p>
-                Ear Elevation offers a comprehensive set of exercises tailored to musicians, aiming to enhance their auditory recognition skills. By mastering the identification of intervals, scales, and arpeggios, individuals can map these skills onto their instrument and with enough practive, develop the ability to play by ear. A personalized account creation allows users to log their exercise outcomes, complete with timestamps, thus facilitating a visual journey of their enhancements over time.
+                Ear Elevation offers a set of exercises tailored to musicians, aiming to enhance their auditory recognition skills. By mastering the identification of intervals, scales, and arpeggios, individuals can map these skills onto their instrument and with enough practive, develop the ability to play by ear. A personalized account creation allows users to log their exercise outcomes, complete with timestamps, thus facilitating a visual journey of their enhancements over time.
             </p>
             <p>
                 This platform primarily caters to individuals possessing a foundational understanding of music theory. For those initially finding these exercises challenging, a good starting point involves associating specific intervals with iconic melodies.
@@ -34,6 +35,7 @@ export default function About() {
             <p>
                 For a more comprehensive list of songs, refer to: <a href="https://www.earmaster.com/products/free-tools/interval-song-chart-generator.html" target="_blank" rel="noopener noreferrer">Interval Song Chart Generator</a>
             </p>
+        </div>
         </div>
     );
 }
