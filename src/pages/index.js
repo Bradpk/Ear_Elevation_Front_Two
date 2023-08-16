@@ -12,8 +12,8 @@ export default function Page() {
       <Image
         src="/ear.jpeg"
         alt="Logo"
-        width={300}
-        height={200}
+        width={600}
+        height={400}
         className={styles.image}
       />
     </div>
