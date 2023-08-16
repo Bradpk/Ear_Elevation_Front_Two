@@ -2,8 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/scale": "pages/scale.js",
-  "/about": "pages/about.js",
-  "/interval": "pages/interval.js",
-  "/": "pages/index.js"
+  "/arpeggio": "pages/arpeggio.js",
+  "/scale": "pages/scale.js"
 }

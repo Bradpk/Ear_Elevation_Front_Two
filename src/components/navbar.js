@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from "react";
 import styles from './Navbar.module.css'; 
+// import jwtDecode from 'jwt-decode'
 
 const Navbar = () => {
   return (
@@ -16,7 +17,13 @@ const Navbar = () => {
           <Link href="/scale">Scale</Link>
         </li>
         <li>
+          <Link href="/arpeggio">Arpeggio</Link>
+        </li>
+        <li>
           <Link href="/about">About</Link>
+        </li>
+        <li>
+          {/* <Link href="/login">Login</Link> */}
         </li>
       </ul>
     </nav>
