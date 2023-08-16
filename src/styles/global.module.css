@@ -1,4 +1,8 @@
 .myGlobalStyles {
     margin: 0;
-    background-color: antiquewhite;
+    background-color: rgb(240, 247, 254);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
   }
