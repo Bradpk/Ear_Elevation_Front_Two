@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
+import styles from './interval.module.css'; 
 
 const IntervalGenerator = () => {
     const [generatedInterval, setGeneratedInterval] = useState('');
@@ -81,33 +82,47 @@ const IntervalGenerator = () => {
         }
     };
 
-    const handleIntervalSelection = (interval) => {
+    const handleIntervalSelection = (interval, index) => {
         setSelectedInterval(interval);
         setAttemptedQuestions(attemptedQuestions + 1);
-
+    
         if (interval === generatedInterval) {
             setCorrectAnswers(correctAnswers + 1);
             generateRandomInterval();
+            document.getElementById(`intervalButton-${index}`).classList.add(styles.correct);
+            setTimeout(() => {
+                document.getElementById(`intervalButton-${index}`).classList.remove(styles.correct);
+            }, 400);
+        } else {
+            document.getElementById(`intervalButton-${index}`).classList.add(styles.incorrect);
+            setTimeout(() => {
+                document.getElementById(`intervalButton-${index}`).classList.remove(styles.incorrect);
+            }, 400);
         }
     };
 
     const intervalButtons = intervals.map((interval, index) => (
-        <button key={index} onClick={() => handleIntervalSelection(interval)}>
+        <button
+            key={index}
+            id={`intervalButton-${index}`} 
+            onClick={() => handleIntervalSelection(interval, index)}
+        >
             {interval}
         </button>
     ));
 
     return (
         <div>
-               <Navbar />
+            <Navbar />
+            <div className={styles.container}> 
             <h2>Interval Generator</h2>
             <button onClick={generateRandomInterval}>Generate Random Interval</button>
             <button onClick={() => playInterval(generatedInterval)}>Replay Interval</button>
-            <p>Generated Interval: {generatedInterval}</p>
             <div>
                 {intervalButtons}
             </div>
             <p>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+        </div>
         </div>
     );
 };
