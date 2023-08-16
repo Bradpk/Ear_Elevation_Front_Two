@@ -4,6 +4,14 @@
     align-items: center;
     justify-content: center;
     margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
     padding: 20px; 
     font-size: 18px; 
+    text-align: center;
+    
+}
+
+.list {
+    text-align: left;
 }

@@ -16,7 +16,7 @@ export default function About() {
             <p>
                 Here's a list of intervals matched with corresponding memorable melodies to get you started:
             </p>
-            <ul>
+            <ul className={styles.list}>
 
                 <li> interval: 'm2', song: 'Jaws Theme Song'</li>
                 <li>interval: 'M2', song: 'Happy Birthday'</li>
