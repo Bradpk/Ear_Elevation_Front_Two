@@ -3,6 +3,7 @@ import AuthService from "../../services/auth.service";
 import { useRouter } from "next/navigation";
 import { useGlobalState } from "../../context/GlobalState";
 import Navbar from '../../components/navbar';
+import styles from './register.module.css';
 
 function Register() {
   const [state, dispatch] = useGlobalState();
@@ -35,6 +36,8 @@ function Register() {
   return (
     <div className="w-screen h-screen">
       <Navbar />
+      <div className={styles.container}>
+        <h1>Register</h1>
       <div className="flex">
         <form className="mx-auto border-2 bg-mtgray" onSubmit={handleRegister}>
           <div className="flex justify-between m-2 items-center space-x-2">
@@ -106,6 +109,7 @@ function Register() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }

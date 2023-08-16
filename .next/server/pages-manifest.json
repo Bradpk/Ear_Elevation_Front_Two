@@ -4,9 +4,9 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/scale": "pages/scale.js",
-  "/interval": "pages/interval.js",
+  "/register": "pages/register.js",
   "/about": "pages/about.js",
   "/login": "pages/login.js",
   "/arpeggio": "pages/arpeggio.js",
-  "/register": "pages/register.js"
+  "/interval": "pages/interval.js"
 }

@@ -4,7 +4,8 @@ import { useGlobalState } from '../../context/GlobalState';
 import authService from '../../services/auth.service';
 import Navbar from '../../components/navbar';
 import jwtDecode from 'jwt-decode';
-import Header from '../../components/Header';
+// import Header from '../../components/Header';
+import styles from './login.module.css';
 
 function Page() {
     const router = useRouter();
@@ -34,7 +35,9 @@ function Page() {
     return (
         <div>
            <Navbar />
-            <Header />
+            {/* <Header /> */}
+            <div className={styles.container}>
+            <h1>Login</h1>
             <div className='flex'>
                 <form
                     onSubmit={handleLogin}
@@ -72,6 +75,7 @@ function Page() {
                     </div>
                 </form>
             </div>
+        </div>
         </div>
     )
 }
