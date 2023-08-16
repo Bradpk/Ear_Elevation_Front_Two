@@ -106,6 +106,7 @@ const IntervalGenerator = () => {
             key={index}
             id={`intervalButton-${index}`} 
             onClick={() => handleIntervalSelection(interval, index)}
+            className={styles.intervalButton} 
         >
             {interval}
         </button>
@@ -115,16 +116,16 @@ const IntervalGenerator = () => {
         <div>
             <Navbar />
             <div className={styles.container}> 
-                <h2>Interval Generator</h2>
-                <button onClick={generateRandomInterval}>Generate Random Interval</button>
-                <button onClick={() => playInterval(generatedInterval)}>Replay Interval</button>
+                <h2 className={styles.heading}>Interval Generator</h2>
+                <button onClick={generateRandomInterval} className={styles.button}>Generate Random Interval</button>
+                <div className={styles.space}></div>
+                <button onClick={() => playInterval(generatedInterval)} className={styles.button}>Replay Interval</button>
                 <div className={styles.buttonGrid}>
                     {intervalButtons}
                 </div>
-                <p>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
             </div>
         </div>
     );
 };
-
 export default IntervalGenerator;
