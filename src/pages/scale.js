@@ -105,7 +105,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("F#4", "4n", now + 1.5);
                 synth.triggerAttackRelease("G4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.5);
-                synth.triggerAttackRelease("C4", "4n", now + 3);
+                synth.triggerAttackRelease("C5", "4n", now + 3);
                 break;
             default:
                 break;
