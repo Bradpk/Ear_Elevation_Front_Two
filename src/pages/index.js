@@ -10,7 +10,7 @@ export default function Page() {
        <Navbar />
     <div className={styles.container}>
       <Image
-        src="/ear.jpeg"
+        src="/ee.jpeg"
         alt="Logo"
         width={600}
         height={400}

@@ -3,10 +3,11 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/interval": "pages/interval.js",
-  "/arpeggio": "pages/arpeggio.js",
+  "/register": "pages/register.js",
   "/scale": "pages/scale.js",
+  "/arpeggio": "pages/arpeggio.js",
+  "/interval": "pages/interval.js",
   "/about": "pages/about.js",
-  "/profile": "pages/profile.js",
-  "/login": "pages/login.js"
+  "/login": "pages/login.js",
+  "/profile": "pages/profile.js"
 }

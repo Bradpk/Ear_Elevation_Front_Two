@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,} from "react";
 import AuthService from "../../services/auth.service";
 import { useRouter } from "next/navigation";
 import { useGlobalState } from "../../context/GlobalState";
@@ -74,7 +74,7 @@ function Register() {
             <label htmlFor="password">Password:</label>
             <input
               className="border"
-              type="text"
+              type="password"
               id="password"
               required
               onChange={(e) => handleChange("password", e.target.value)}
@@ -84,7 +84,7 @@ function Register() {
             <label htmlFor="passwordConf">Confirm Password:</label>
             <input
               className="border"
-              type="text"
+              type="password"
               id="passwordConf"
               required
               onChange={(e) => handleChange("passwordConf", e.target.value)}
