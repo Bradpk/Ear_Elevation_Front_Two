@@ -13,7 +13,7 @@
     justify-content: center;
     margin-top: 50px;
     padding: 20px; 
-    font-size: 18px; 
+    font-size: 20px; 
     font-family:'Courier New', Courier, monospace
 }
 
@@ -32,6 +32,12 @@
     font-size: inherit; 
     border: none; 
     border-radius: 10px;
+    color: rgb(240, 247, 254);
+    background-color: rgb(38, 115, 148);;
+}
+
+.button:hover {
+    background-color: rgb(50, 150, 200);
 }
 
 .intervalButton {
@@ -40,6 +46,12 @@
     font-size: inherit;
     border: none; 
     border-radius: 10px;
+    color: rgb(240, 247, 254);
+    background-color: rgb(38, 115, 148);;
+}
+
+.intervalButton:hover {
+    background-color: rgb(50, 150, 200);
 }
 
 .stats {
