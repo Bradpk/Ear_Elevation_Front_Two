@@ -46,12 +46,7 @@
     font-size: inherit;
     border: none; 
     border-radius: 10px;
-    color: rgb(240, 247, 254);
-    background-color: rgb(38, 115, 148);;
-}
-
-.arpeggioButton:hover {
-    background-color: rgb(50, 150, 200);
+    color: rgb(38, 115, 148);;
 }
 
 .stats {
