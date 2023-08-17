@@ -16,10 +16,10 @@
   color: rgb(240, 247, 254);
   font-weight: bold;
   transition: font-size 0.1s ease-in-out;
-  line-height: 40px; 
+  line-height: 41px; 
 }
 
 .Navbar a:hover {
   color: white;
-  font-size: 2em
+  font-size: 1.9em
 }

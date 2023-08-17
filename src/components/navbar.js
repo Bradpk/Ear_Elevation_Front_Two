@@ -1,18 +1,17 @@
 import Link from 'next/link';
 import React from "react";
-import styles from './Navbar.module.css'; 
+import styles from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
-    <nav className={styles.Navbar}> 
+    <nav className={styles.Navbar}>
       <ul>
         <li>
-        <Link href="/">
-            <a>
-              <FontAwesomeIcon icon={faHome} style={{ color: "#feffff" }} />
-            </a>
+          <Link href="/">
+            <FontAwesomeIcon icon={faHome} style={{ color: "#feffff" }} />
           </Link>
         </li>
         <li>
@@ -31,7 +30,9 @@ const Navbar = () => {
           <Link href="/login">Login</Link>
         </li>
         <li>
-          <Link href="/register">Register</Link>
+          <Link href="/profile">
+            <FontAwesomeIcon icon={faUser} style={{ color: "#feffff" }} />
+          </Link>
         </li>
       </ul>
     </nav>

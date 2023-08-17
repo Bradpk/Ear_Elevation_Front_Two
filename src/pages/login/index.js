@@ -4,8 +4,8 @@ import { useGlobalState } from '../../context/GlobalState';
 import authService from '../../services/auth.service';
 import Navbar from '../../components/navbar';
 import jwtDecode from 'jwt-decode';
-// import Header from '../../components/Header';
 import styles from './login.module.css';
+import Link from 'next/link';
 
 function Page() {
     const router = useRouter();
@@ -17,7 +17,6 @@ function Page() {
 
     function handleLogin(e) {
         e.preventDefault();
-        // console.log(email.current.value , password.current.value , "HERE")
         authService
             .login(email, password)
             .then(async (resp) => {
@@ -74,6 +73,9 @@ function Page() {
                         />
                     </div>
                 </form>
+                <Link href="/register">
+            Register
+          </Link>
             </div>
         </div>
         </div>
