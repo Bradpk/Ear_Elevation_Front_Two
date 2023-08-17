@@ -48,6 +48,10 @@
     color: rgb(38, 115, 148);
 }
 
+.intervalButton:hover:not(.correct):not(.incorrect) {
+    background-color: rgba(38, 115, 148, 0.1);
+}
+
 .stats {
     font-size: 20px;
     margin-top: 10px;
