@@ -1,14 +1,19 @@
 import Link from 'next/link';
 import React from "react";
 import styles from './Navbar.module.css'; 
-// import jwtDecode from 'jwt-decode'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   return (
     <nav className={styles.Navbar}> 
       <ul>
         <li>
-          <Link href="/">Home</Link>
+        <Link href="/">
+            <a>
+              <FontAwesomeIcon icon={faHome} style={{ color: "#feffff" }} />
+            </a>
+          </Link>
         </li>
         <li>
           <Link href="/interval">Interval</Link>

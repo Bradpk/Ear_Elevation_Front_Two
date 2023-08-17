@@ -13,13 +13,13 @@
 
 .Navbar a {
   text-decoration: none;
-  color: #cbcbcb;
+  color: rgb(240, 247, 254);
   font-weight: bold;
-  transition: color 0.1s ease-in-out, font-size 0.1s ease-in-out;
-  line-height: 60px; 
+  transition: font-size 0.1s ease-in-out;
+  line-height: 40px; 
 }
 
 .Navbar a:hover {
   color: white;
-  font-size: 1.5em
+  font-size: 2em
 }
