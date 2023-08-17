@@ -10,23 +10,24 @@ import Link from 'next/link';
 function Page() {
     const router = useRouter();
 
-    const [ state, dispatch ] = useGlobalState();
+    const [state, dispatch] = useGlobalState();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     function handleLogin(e) {
         e.preventDefault();
+        const username = email;
         authService
-            .login(email, password)
+            .login(email, password, username)
             .then(async (resp) => {
                 console.log(resp)
-                let data = jwtDecode(resp.access)
+                let data = jwtDecode(resp.access);
                 await dispatch({
                     currentUserToken: resp.access,
                     currentUser: data
-                })
-                router.push('/dashboard')
+                });
+                router.push('/dashboard');
             });
     }
 

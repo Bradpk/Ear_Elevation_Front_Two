@@ -14,6 +14,7 @@ function Register() {
     firstName: "",
     lastName: "",
     email: "",
+    username: "",
   });
 
   const handleChange = (key, value) => {
@@ -25,8 +26,8 @@ function Register() {
 
   async function handleRegister(e) {
     e.preventDefault();
-    AuthService.register(user);
-    dispatch({
+     await AuthService.register(user);
+     dispatch({
       currentUserToken: state.currentUserToken,
       currentUser: state.currentUser?.user_id,
     });
@@ -67,7 +68,12 @@ function Register() {
               type="text"
               id="email"
               required
-              onChange={(e) => handleChange("email", e.target.value)}
+              onChange={(e) => {
+                let olduser = user;
+                olduser.email = e.target.value;
+                olduser.username = e.target.value;
+                setUser(olduser);
+              }}
             />
           </div>
           <div className="flex justify-between m-2 items-center space-x-2">
