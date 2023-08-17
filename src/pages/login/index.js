@@ -15,7 +15,7 @@ function Page() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleLogin(e) {
+    const handleLogin = (e) => {
         e.preventDefault();
         const username = email;
         authService
