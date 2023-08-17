@@ -53,7 +53,7 @@ function Page() {
                         />
                     </div>
                     <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="pass">Password</label>
+                        <label htmlFor="pass">Password:</label>
                         <input
                             className='border'
                             type="password"
@@ -66,14 +66,14 @@ function Page() {
                     </div>
                     <div className='flex'>
                         <input
-                            className="bg-mtpurple text-white py-2 px-4 rounded-lg mx-auto my-2 font-bold disabled:opacity-60"
+                            className={styles.button}
                             type="submit"
                             value="Sign in"
                         />
                     </div>
                 </form>
-                <Link href="/register">
-            Register
+                <Link href="/register" classname={styles.link}>
+            Register Here
           </Link>
             </div>
         </div>

@@ -94,7 +94,7 @@ function Register() {
             <input
               type="submit"
               value="Register!"
-              className="bg-mtpurple text-white py-2 px-4 rounded-lg mx-auto my-2 font-bold disabled:opacity-60"
+              className={styles.button}
               disabled={
                 user.password &&
                 user.password.length >= 8 &&

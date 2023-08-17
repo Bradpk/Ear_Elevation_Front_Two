@@ -25,7 +25,6 @@
     margin-top: 10px;
 }
 
-
 .button {
     margin: 10px; 
     padding: 15px 30px; 
@@ -33,7 +32,7 @@
     border: none; 
     border-radius: 10px;
     color: rgb(240, 247, 254);
-    background-color: rgb(38, 115, 148);;
+    background-color: rgb(38, 115, 148);
 }
 
 .button:hover {
@@ -46,7 +45,7 @@
     font-size: inherit;
     border: none; 
     border-radius: 10px;
-    color: rgb(38, 115, 148);;
+    color: rgb(38, 115, 148);
 }
 
 .stats {
