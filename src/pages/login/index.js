@@ -14,12 +14,14 @@ function Page() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    // const [username, setUsername] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const username = email;
+        // const username = email;
         authService
-            .login(email, password, username)
+            .login(email, password)
+                // , username
             .then(async (resp) => {
                 console.log(resp)
                 let data = jwtDecode(resp.access);
