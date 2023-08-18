@@ -3,7 +3,7 @@ import Navbar from '../../components/navbar';
 import authService from '../../services/auth.service';
 import jwtDecode from 'jwt-decode';
 import Link from 'next/link';
-import axios from 'axios'; // Import axios for making HTTP requests
+import axios from 'axios'; 
 
 const ProfilePage = () => {
   const [postData, setPostData] = useState({ title: '', content: '' });
@@ -12,7 +12,7 @@ const ProfilePage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/posts', postData); // Replace with your API endpoint
+      const response = await axios.post('http://127.0.0.1:8000/api/test/', postData);
       console.log('Post request response:', response.data);
     } catch (error) {
       console.error('Error making post request:', error);

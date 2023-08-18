@@ -10,7 +10,7 @@ import Link from 'next/link';
 function Page() {
     const router = useRouter();
 
-    const [state, dispatch] = useGlobalState();
+    const {state, dispatch} = useGlobalState();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
