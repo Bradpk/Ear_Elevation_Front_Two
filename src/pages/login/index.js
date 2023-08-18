@@ -27,7 +27,7 @@ function Page() {
                     currentUserToken: resp.access,
                     currentUser: data
                 });
-                router.push('/dashboard');
+                router.push('/');
             });
     }
 
@@ -43,7 +43,7 @@ function Page() {
                     className='mx-auto my-auto border-2 bg-mtgray'
                 >
                     <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email">Email:</label><br></br>
                         <input
                             className='border'
                             type="text"
@@ -54,7 +54,7 @@ function Page() {
                         />
                     </div>
                     <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="pass">Password:</label>
+                        <label htmlFor="pass">Password:</label><br></br>
                         <input
                             className='border'
                             type="password"

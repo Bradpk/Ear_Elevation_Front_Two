@@ -6,7 +6,7 @@ import Navbar from '../../components/navbar';
 import styles from './register.module.css';
 
 function Register() {
-  const [state, dispatch] = useGlobalState();
+  const {state, dispatch} = useGlobalState();
   const router = useRouter();
   const [user, setUser] = useState({
     password: "",
@@ -42,7 +42,7 @@ function Register() {
       <div className="flex">
         <form className="mx-auto border-2 bg-mtgray" onSubmit={handleRegister}>
           <div className="flex justify-between m-2 items-center space-x-2">
-            <label htmlFor="firstName">First Name:</label>
+            <label htmlFor="firstName">First Name:</label><br></br>
             <input
               className="border"
               type="text"
@@ -52,7 +52,7 @@ function Register() {
             />
           </div>
           <div className="flex justify-between m-2 items-center space-x-2">
-            <label htmlFor="lastName">Last Name:</label>
+            <label htmlFor="lastName">Last Name:</label><br></br>
             <input
               className="border"
               type="text"
@@ -62,7 +62,7 @@ function Register() {
             />
           </div>
           <div className="flex justify-between m-2 items-center space-x-2">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email:</label><br></br>
             <input
               className="border"
               type="text"
@@ -77,7 +77,7 @@ function Register() {
             />
           </div>
           <div className="flex justify-between m-2 items-center space-x-2">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password:</label><br></br>
             <input
               className="border"
               type="password"
@@ -87,7 +87,7 @@ function Register() {
             />
           </div>
           <div className="flex justify-between m-2 items-center space-x-2">
-            <label htmlFor="passwordConf">Confirm Password:</label>
+            <label htmlFor="passwordConf">Confirm Password:</label><br></br>
             <input
               className="border"
               type="password"
