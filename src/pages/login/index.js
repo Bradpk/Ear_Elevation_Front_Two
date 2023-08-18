@@ -14,14 +14,13 @@ function Page() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [username, setUsername] = useState("");
+    const [username, setUsername] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
         // const username = email;
         authService
-            .login(email, password)
-                // , username
+            .login(email, password, username)
             .then(async (resp) => {
                 console.log(resp)
                 let data = jwtDecode(resp.access);
@@ -53,7 +52,20 @@ function Page() {
                             name="email"
                             onChange={(e) => setEmail(e.target.value)}
                             required
+                        /></div>
+                        
+                        <div className='flex justify-between m-2 items-center space-x-2'>
+                        <label htmlFor="usernamel">Username:</label><br></br>
+                        <input
+                            className='border'
+                            type="text"
+                            id="username"
+                            name="username"
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
                         />
+                        
+                    
                     </div>
                     <div className='flex justify-between m-2 items-center space-x-2'>
                         <label htmlFor="pass">Password:</label><br></br>
