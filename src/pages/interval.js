@@ -5,8 +5,8 @@ import styles from '../styles/interval.module.css';
 import { useRouter } from 'next/router';
 import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
-
-
+import axios from 'axios'; 
+//-----------------------------------------------------------------------------------------------------------------------------
 const IntervalGenerator = () => {
     const [generatedInterval, setGeneratedInterval] = useState('');
     const [previousInterval, setPreviousInterval] = useState('');
@@ -16,15 +16,21 @@ const IntervalGenerator = () => {
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
-
-    // ------ Between these lines needs to be converted into an axios post request
-    const handleLogout = () => {
-        AuthService.logout();
-        dispatch({ type: 'LOGOUT_USER' });
-        router.push('/');
-      };
-    // -------------------
-
+//-----------------------------------------------------------------------------------------------------------------------------
+    const handleScore = () => {
+        const data = {
+            title: `Attempted: ${attemptedQuestions}`,
+            content: `Correct: ${correctAnswers}`
+        };
+        axios.post('http://127.0.0.1:8000/api/test/', data)
+            .then(response => {
+                console.log('Post request successful:', response.data);
+            })
+            .catch(error => {
+                console.error('Error posting data:', error);
+            });
+    };
+//-----------------------------------------------------------------------------------------------------------------------------
     const intervals = ['m2', 'M2', 'm3', 'M3', 'P4', 'D5', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8'];
 
     const generateRandomInterval = () => {
@@ -37,11 +43,10 @@ const IntervalGenerator = () => {
         setPreviousInterval(randomInterval);
         playInterval(randomInterval);
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const playInterval = (interval) => {
         const synth = new Tone.Synth().toDestination();
         const now = Tone.now();
-
 
         switch (interval) {
             case 'm2':
@@ -96,7 +101,7 @@ const IntervalGenerator = () => {
                 break;
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const handleIntervalSelection = (interval, index) => {
         setSelectedInterval(interval);
         setAttemptedQuestions(attemptedQuestions + 1);
@@ -115,7 +120,7 @@ const IntervalGenerator = () => {
             }, 400);
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const intervalButtons = intervals.map((interval, index) => (
         <button
             key={index}
@@ -126,7 +131,7 @@ const IntervalGenerator = () => {
             {interval}
         </button>
     ));
-
+//-----------------------------------------------------------------------------------------------------------------------------
     return (
         <div>
             <Navbar />
@@ -141,7 +146,7 @@ const IntervalGenerator = () => {
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
                 {state.user ? (
           
-            <button className={styles.logButton} onClick={handleLogout}>Log Excercise</button>
+            <button className={styles.logButton} onClick={handleScore}>Log Excercise</button>
           
         ) : (
           
@@ -153,3 +158,4 @@ const IntervalGenerator = () => {
     );
 };
 export default IntervalGenerator;
+//-----------------------------------------------------------------------------------------------------------------------------
