@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
 import styles from '../styles/interval.module.css'; 
+import { useRouter } from 'next/router';
+import AuthService from '../services/auth.service';
+import { useGlobalState } from '../context/GlobalState';
+
 
 const IntervalGenerator = () => {
     const [generatedInterval, setGeneratedInterval] = useState('');
@@ -9,6 +13,17 @@ const IntervalGenerator = () => {
     const [selectedInterval, setSelectedInterval] = useState('');
     const [attemptedQuestions, setAttemptedQuestions] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
+
+    const router = useRouter();
+    const { state, dispatch } = useGlobalState();
+
+    // ------ Between these lines needs to be converted into an axios post request
+    const handleLogout = () => {
+        AuthService.logout();
+        dispatch({ type: 'LOGOUT_USER' });
+        router.push('/');
+      };
+    // -------------------
 
     const intervals = ['m2', 'M2', 'm3', 'M3', 'P4', 'D5', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8'];
 
@@ -124,6 +139,15 @@ const IntervalGenerator = () => {
                     {intervalButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                {state.user ? (
+          
+            <button className={styles.logButton} onClick={handleLogout}>Log Excercise</button>
+          
+        ) : (
+          
+            null
+          
+        )}
             </div>
         </div>
     );

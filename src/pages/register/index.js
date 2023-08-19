@@ -5,6 +5,8 @@ import { useGlobalState } from "../../context/GlobalState";
 import Navbar from '../../components/navbar';
 import styles from './register.module.css';
 
+import jwtDecode from 'jwt-decode';
+
 function Register() {
   const {state, dispatch} = useGlobalState();
   const router = useRouter();

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
 import styles from '../styles/arpeggio.module.css';
+import { useRouter } from 'next/router';
+import AuthService from '../services/auth.service';
+import { useGlobalState } from '../context/GlobalState';
 
 const ArpeggioGenerator = () => {
     const [generatedArpeggio, setGeneratedArpeggio] = useState('');
@@ -9,6 +12,16 @@ const ArpeggioGenerator = () => {
     const [selectedArpeggio, setSelectedArpeggio] = useState('');
     const [attemptedQuestions, setAttemptedQuestions] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
+
+    const router = useRouter();
+    const { state, dispatch } = useGlobalState();
+
+    // ------ Between these lines needs to be converted into an axios post request
+    const handleLogout = () => {
+        AuthService.logout();
+        dispatch({ type: 'LOGOUT_USER' });
+        router.push('/');
+      };
 
     const arpeggios = ['Major 7th', 'Minor 7th', 'Dominant 7th', 'Half-Dim 7th', 'Diminished 7th', 'Minor-Major 7th'];
 
@@ -142,6 +155,15 @@ const ArpeggioGenerator = () => {
                     {arpeggioButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                {state.user ? (
+          
+          <button className={styles.logButton} onClick={handleLogout}>Log Excercise</button>
+        
+      ) : (
+        
+          null
+        
+      )}
             </div>
         </div>
     );

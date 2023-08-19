@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
 import styles from "../styles/scale.module.css"
+import { useRouter } from 'next/router';
+import AuthService from '../services/auth.service';
+import { useGlobalState } from '../context/GlobalState';
 
 const ScaleGenerator = () => {
     const [generatedScale, setGeneratedScale] = useState('');
@@ -10,7 +13,18 @@ const ScaleGenerator = () => {
     const [attemptedQuestions, setAttemptedQuestions] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
 
+    const router = useRouter();
+    const { state, dispatch } = useGlobalState();
+
+    // ------ Between these lines needs to be converted into an axios post request
+    const handleLogout = () => {
+        AuthService.logout();
+        dispatch({ type: 'LOGOUT_USER' });
+        router.push('/');
+      };
+
     const scales = ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aolian', 'Locrian', 'Blues'];
+    
 
     const generateRandomScale = () => {
         let randomScale = previousScale;
@@ -154,6 +168,15 @@ const ScaleGenerator = () => {
                     {scaleButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                {state.user ? (
+          
+          <button className={styles.logButton} onClick={handleLogout}>Log Excercise</button>
+        
+      ) : (
+        
+          null
+        
+      )}
             </div>
         </div>
     );

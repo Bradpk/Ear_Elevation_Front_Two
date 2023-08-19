@@ -20,17 +20,23 @@ function Page() {
         e.preventDefault();
         const username = email;
         authService
-            .login(email, password, username)
-            .then(async (resp) => {
-                console.log(resp)
-                let data = jwtDecode(resp.access);
-                await dispatch({
-                    currentUserToken: resp.access,
-                    currentUser: data
-                });
-                router.push('/');
-            });
-    }
+          .login(email, password, username)
+          .then(async (resp) => {
+            console.log(resp);
+            if (resp.access) {
+              let data = jwtDecode(resp.access);
+              await dispatch({
+                type: 'SET_USER',
+                payload: data,
+              });
+              router.push('/');
+            } else {
+              console.log('Login failed');
+              dispatch({ type: 'LOGOUT_USER' }); 
+            }
+          });
+      };
+      
 
 
     return (

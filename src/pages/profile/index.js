@@ -45,7 +45,7 @@ const ProfilePage = () => {
   return (
     <div>
       <Navbar />
-      <h2>Create a New Post</h2>
+      <h2>New Post</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
           <label htmlFor="title">Title</label>

@@ -57,3 +57,16 @@
     font-size: 20px;
     margin-top: 10px;
 }
+
+.logButton {
+    margin: 10px;
+    padding: 15px 30px; 
+    font-size: inherit;
+    border: solid black 1px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+}
+
+.logButton:hover:not(.correct):not(.incorrect) {
+    background-color: rgba(38, 115, 148, 0.1);
+}
