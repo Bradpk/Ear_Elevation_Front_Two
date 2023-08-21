@@ -9,19 +9,20 @@ import axios from 'axios';
 const ProfilePage = () => {
   const [postData, setPostData] = useState({ title: '', content: '' });
   const [fetchedData, setFetchedData] = useState([]);
+  const [userLogs, setUserLogs] = useState([]);
   const {state, dispatch} = useGlobalState();
   
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   fetchPosts();
+  // }, []);
 //----------------------
-  const fetchPosts = async () => {
+  const getName = async () => {
     try {
       console.log(state)
       const user_id = state.user.user_id
-      const response = await axios.get('http://127.0.0.1:8000/api/huh/' + user_id); // http://127.0.0.1:8000/api/huh/<int:pk>/
+      const response = await axios.get('http://127.0.0.1:8000/api/huh/' + user_id); 
       const newUser = state.user;
-      newUser.data = response.data
+      newUser.data = response.data;
       await dispatch({
       currentUser: newUser
       });
@@ -32,30 +33,47 @@ const ProfilePage = () => {
     }
   };
 //-----------------------
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  // const handleFormSubmit = async (e) => {
+  //   e.preventDefault();
 
+  //   try {
+  //     const response = await axios.post('http://127.0.0.1:8000/api/test/', postData);
+  //     console.log('Post request response:', response.data);
+  //     fetchPosts(); 
+  //   } catch (error) {
+  //     console.error('Error making post request:', error);
+  //   }
+  // };
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setPostData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
+  //------
+
+  const fetchUserLogs = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/test/', postData);
-      console.log('Post request response:', response.data);
-      fetchPosts(); 
+      const user_id = state.user.user_id; 
+      const response = await axios.get(`http://127.0.0.1:8000/api/user-logs/?user_id=${user_id}`);
+      setUserLogs(response.data);
     } catch (error) {
-      console.error('Error making post request:', error);
+      console.error('Error fetching user logs:', error);
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPostData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  useEffect(() => {
+    getName();
+    fetchUserLogs(); 
+  }, []);
+  //-------------
 
   return (
     <div>
       <Navbar />
-      <h2>New Post</h2>
+      {/* <h2>New Post</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -77,18 +95,21 @@ const ProfilePage = () => {
           />
         </div>
         <button type="submit">Create Post</button>
-      </form>
+      </form> */}
 
-      <h2>Fetched Data</h2>
-      <p>{state.user.user_id}</p>
-      <p>{state.user.data.first_name}</p>
+      <h2>Welcome!</h2>
+      <p>{state.user.data && state.user.data.first_name}, {state.user.data && state.user.data.last_name}</p>
+      <h2>Exercise History</h2>
       <ul>
-        {/* {fetchedData.map((post, index) => (
+        {userLogs.map((log, index) => (
           <li key={index}>
-            <h3>{post.first_name}</h3>
-            <p>{post.content}</p>
+            <p>{log.exercise_id}</p>
+            <p>{log.date_completed}</p>
+            <p>{log.total_questions}</p>
+            <p>{log.correct_answers}</p>
+
           </li>
-        ))} */}
+        ))}
       </ul>
     </div>
   );

@@ -13,16 +13,24 @@ const IntervalGenerator = () => {
     const [selectedInterval, setSelectedInterval] = useState('');
     const [attemptedQuestions, setAttemptedQuestions] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [exerciseName, setExerciseName] = useState('Intervals');
 
+ 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
+    const user_id = state.user.user_id
 //-----------------------------------------------------------------------------------------------------------------------------
     const handleScore = () => {
         const data = {
-            title: `Attempted: ${attemptedQuestions}`,
-            content: `Correct: ${correctAnswers}`
+            exercise_id: `Excercise: ${exerciseName}`,
+            total_questions: `Attempted: ${attemptedQuestions}`,
+            correct_answers: `Correct: ${correctAnswers}`,
+            date_completed: currentDate.toISOString(),
+            user_id: user_id
+
         };
-        axios.post('http://127.0.0.1:8000/api/test/', data)
+        axios.post('http://127.0.0.1:8000/api/user-logs/', data)
             .then(response => {
                 console.log('Post request successful:', response.data);
             })
