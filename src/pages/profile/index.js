@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
+import { useGlobalState } from '../../context/GlobalState';
 import authService from '../../services/auth.service';
 import jwtDecode from 'jwt-decode';
 import Link from 'next/link';
@@ -8,20 +9,29 @@ import axios from 'axios';
 const ProfilePage = () => {
   const [postData, setPostData] = useState({ title: '', content: '' });
   const [fetchedData, setFetchedData] = useState([]);
+  const {state, dispatch} = useGlobalState();
   
   useEffect(() => {
     fetchPosts();
   }, []);
-
+//----------------------
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/test/');
+      console.log(state)
+      const user_id = state.user.user_id
+      const response = await axios.get('http://127.0.0.1:8000/api/huh/' + user_id); // http://127.0.0.1:8000/api/huh/<int:pk>/
+      const newUser = state.user;
+      newUser.data = response.data
+      await dispatch({
+      currentUser: newUser
+      });
+      console.log(response.data)
       setFetchedData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
+//-----------------------
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -70,13 +80,15 @@ const ProfilePage = () => {
       </form>
 
       <h2>Fetched Data</h2>
+      <p>{state.user.user_id}</p>
+      <p>{state.user.data.first_name}</p>
       <ul>
-        {fetchedData.map((post, index) => (
+        {/* {fetchedData.map((post, index) => (
           <li key={index}>
-            <h3>{post.title}</h3>
+            <h3>{post.first_name}</h3>
             <p>{post.content}</p>
           </li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
