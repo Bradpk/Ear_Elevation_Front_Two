@@ -19,9 +19,9 @@ const IntervalGenerator = () => {
  
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
-    const user_id = state.user.user_id
 //-----------------------------------------------------------------------------------------------------------------------------
     const handleScore = () => {
+        const user_id = state.user.user_id
         const data = {
             exercise_id: `Excercise: ${exerciseName}`,
             total_questions: `Attempted: ${attemptedQuestions}`,
