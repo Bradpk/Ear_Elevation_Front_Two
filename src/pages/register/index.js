@@ -28,13 +28,28 @@ function Register() {
 
   async function handleRegister(e) {
     e.preventDefault();
-     await AuthService.register(user);
-     dispatch({
-      currentUserToken: state.currentUserToken,
-      currentUser: state.currentUser?.user_id,
-    });
-    router.push("/");
+    
+    try {
+      await AuthService.register(user);
+      
+      const loginResp = await AuthService.login(user.email, user.password, user.username);
+  
+      if (loginResp.access) {
+        const data = jwtDecode(loginResp.access);
+        await dispatch({
+          type: 'SET_USER',
+          payload: data,
+        });
+        router.push('/');
+      } else {
+        console.log('Login after registration failed');
+        dispatch({ type: 'LOGOUT_USER' });
+      }
+    } catch (error) {
+      console.error('Registration failed:', error);
+    }
   }
+
 
   return (
     <div className="w-screen h-screen">

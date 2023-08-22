@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
 import { useGlobalState } from '../../context/GlobalState';
 import authService from '../../services/auth.service';
+import styles from './profile.module.css';
 import jwtDecode from 'jwt-decode';
 import Link from 'next/link';
 import axios from 'axios'; 
@@ -102,7 +103,7 @@ const ProfilePage = () => {
       <h2>Exercise History</h2>
       <ul>
         {userLogs.map((log, index) => (
-          <li key={index}>
+          <li className={styles.box} key={index}>
             <p>{log.exercise_id}</p>
             <p>{log.date_completed}</p>
             <p>{log.total_questions}</p>

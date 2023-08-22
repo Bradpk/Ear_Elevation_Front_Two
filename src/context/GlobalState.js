@@ -5,7 +5,6 @@ const initialState = {
 };
 // Create a context object
 const GlobalStateContext = createContext();
-// Reducer function to handle state changes
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_USER':

@@ -9,7 +9,6 @@ import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
 
 
-
 const Navbar = () => {
   const router = useRouter();
   const { state, dispatch } = useGlobalState();
