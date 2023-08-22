@@ -70,10 +70,19 @@ const ProfilePage = () => {
     fetchUserLogs(); 
   }, []);
   //-------------
+  const deleteLog = async (logId) => {
+    try {
+      const response = await axios.delete(`http://127.0.0.1:8000/api/user-log/${logId}`);
+      setUserLogs((prevLogs) => prevLogs.filter((log) => log.log_id !== logId));
+    } catch (error) {
+      console.error('Error deleting user log:', error);
+    }
+  };
 
   return (
     <div>
       <Navbar />
+      <div className={styles.container}>
       {/* <h2>New Post</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
@@ -108,10 +117,11 @@ const ProfilePage = () => {
             <p>{log.date_completed}</p>
             <p>{log.total_questions}</p>
             <p>{log.correct_answers}</p>
-
+            <button className={styles.button} onClick={() => deleteLog(log.log_id)}>Delete</button> 
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };
