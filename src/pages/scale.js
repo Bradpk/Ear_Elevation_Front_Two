@@ -5,6 +5,7 @@ import styles from "../styles/scale.module.css"
 import { useRouter } from 'next/router';
 import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
+import axios from 'axios'; 
 
 const ScaleGenerator = () => {
     const [generatedScale, setGeneratedScale] = useState('');
@@ -12,16 +13,31 @@ const ScaleGenerator = () => {
     const [selectedScale, setSelectedScale] = useState('');
     const [attemptedQuestions, setAttemptedQuestions] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [exerciseName, setExerciseName] = useState('Scales');
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
 
     // ------ Between these lines needs to be converted into an axios post request
-    const handleLogout = () => {
-        AuthService.logout();
-        dispatch({ type: 'LOGOUT_USER' });
-        router.push('/');
-      };
+    const handleScore = () => {
+        const user_id = state.user.user_id
+        const data = {
+            exercise_id: `Excercise: ${exerciseName}`,
+            total_questions: `Attempted: ${attemptedQuestions}`,
+            correct_answers: `Correct: ${correctAnswers}`,
+            date_completed: currentDate.toISOString(),
+            user_id: user_id
+
+        };
+        axios.post('http://127.0.0.1:8000/api/user-logs/', data)
+            .then(response => {
+                console.log('Post request successful:', response.data);
+            })
+            .catch(error => {
+                console.error('Error posting data:', error);
+            });
+    };
 
     const scales = ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aolian', 'Locrian', 'Blues'];
     
@@ -170,7 +186,7 @@ const ScaleGenerator = () => {
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
                 {state.user ? (
           
-          <button className={styles.logButton} onClick={handleLogout}>Log Excercise</button>
+          <button className={styles.logButton} onClick={handleScore}>Log Excercise</button>
         
       ) : (
         
