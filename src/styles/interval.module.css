@@ -69,3 +69,4 @@
 .logButton:hover:not(.correct):not(.incorrect) {
     background-color: rgba(38, 115, 148, 0.1);
 }
+

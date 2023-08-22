@@ -15,6 +15,7 @@ const IntervalGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Intervals');
+    
 
  
     const router = useRouter();
