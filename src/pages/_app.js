@@ -8,6 +8,5 @@ function MyApp({ Component, pageProps }) {
       <div className={styles.myGlobalStyles}><Component {...pageProps} /></div>
     </GlobalStateProvider>
   );
-  return ;
 }
 export default MyApp;
