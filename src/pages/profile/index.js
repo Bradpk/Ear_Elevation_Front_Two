@@ -72,6 +72,7 @@ const ProfilePage = () => {
   //-------------
   const deleteLog = async (logId) => {
     try {
+      console.log("Deleting user log with ID:", logId);
       const response = await axios.delete(`http://127.0.0.1:8000/api/user-log/${logId}`);
       setUserLogs((prevLogs) => prevLogs.filter((log) => log.log_id !== logId));
     } catch (error) {
@@ -108,7 +109,11 @@ const ProfilePage = () => {
       </form> */}
 
       <h2>Welcome!</h2>
-      <p>{state.user.data && state.user.data.first_name}, {state.user.data && state.user.data.last_name}</p>
+      <p>
+  {state.user && state.user.data
+    ? `${state.user.data.first_name}, ${state.user.data.last_name}`
+    : 'User'}
+</p>
       <h2>Exercise History</h2>
       <ul>
         {userLogs.map((log, index) => (
