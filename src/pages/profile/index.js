@@ -69,6 +69,7 @@ const ProfilePage = () => {
     getName();
     fetchUserLogs(); 
   }, []);
+
   //-------------
   const deleteLog = async (logId) => {
     try {
