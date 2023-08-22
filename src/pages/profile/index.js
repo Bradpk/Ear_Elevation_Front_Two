@@ -72,8 +72,7 @@ const ProfilePage = () => {
   //-------------
   const deleteLog = async (logId) => {
     try {
-      console.log("Deleting user log with ID:", logId);
-      const response = await axios.delete(`http://127.0.0.1:8000/api/user-log/${logId}`);
+      const response = await axios.delete(`http://127.0.0.1:8000/api/user-logs/${logId}`);
       setUserLogs((prevLogs) => prevLogs.filter((log) => log.log_id !== logId));
     } catch (error) {
       console.error('Error deleting user log:', error);
