@@ -57,7 +57,7 @@ const ProfilePage = () => {
   const fetchUserLogs = async () => {
     try {
       const user_id = state.user.user_id; 
-      const response = await axios.get(`http://127.0.0.1:8000/api/user-logs/?user_id=${user_id}`);
+      const response = await axios.get(`http://127.0.0.1:8000/api/user-log/${user_id}`);
       setUserLogs(response.data);
     } catch (error) {
       console.error('Error fetching user logs:', error);
