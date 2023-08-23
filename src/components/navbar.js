@@ -28,13 +28,16 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/interval">Interval</Link>
+          <Link href="/interval">Intervals</Link>
         </li>
         <li>
-          <Link href="/scale">Scale</Link>
+          <Link href="/scale">Scales</Link>
         </li>
         <li>
-          <Link href="/arpeggio">Arpeggio</Link>
+          <Link href="/arpeggio">Arpeggios</Link>
+        </li>
+        <li>
+          <Link href="/loop">Loop</Link>
         </li>
         <li>
           <Link href="/about">About</Link>
