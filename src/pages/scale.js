@@ -32,6 +32,7 @@ const ScaleGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Scales');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
+    
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
@@ -77,9 +78,9 @@ const ScaleGenerator = () => {
     const playScale = (interval) => {
         const synth = new Tone.Synth({volume: -10,}).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 1.4, 
-            preDelay: 0.02,
-            wet: 0.9, 
+            decay: 1.2, 
+            preDelay: 0.01,
+            wet: 1, 
         }).toDestination();
 
         synth.connect(reverb);

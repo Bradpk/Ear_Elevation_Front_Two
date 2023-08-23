@@ -37,6 +37,9 @@ const Navbar = () => {
           <Link href="/arpeggio">Arpeggios</Link>
         </li>
         <li>
+          <Link href="/loop">Loop</Link>
+        </li>
+        <li>
           <Link href="/about">About</Link>
         </li>
         {state.user ? (
