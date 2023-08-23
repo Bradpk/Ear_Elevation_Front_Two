@@ -1,11 +1,10 @@
 .box {
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
     list-style: none; 
-    width: 500px; 
-    height: 250px; 
+    width: 450px; 
+    height: 225px; 
     border-radius: 10px;
+    background-color: rgb(236, 236, 236);
 }
 
 .container {
@@ -31,3 +30,14 @@
     background-color: rgb(240, 72, 72)
 }
 
+.buttonGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}

@@ -15,6 +15,7 @@ const ScaleGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Scales');
+    const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
@@ -23,7 +24,7 @@ const ScaleGenerator = () => {
     const handleScore = () => {
         const user_id = state.user.user_id
         const data = {
-            exercise_id: `Excercise: ${exerciseName}`,
+            exercise_id: exerciseName,
             total_questions: `Attempted: ${attemptedQuestions}`,
             correct_answers: `Correct: ${correctAnswers}`,
             date_completed: currentDate.toISOString(),
@@ -31,13 +32,17 @@ const ScaleGenerator = () => {
 
         };
         axios.post('http://127.0.0.1:8000/api/user-logs/', data)
-            .then(response => {
-                console.log('Post request successful:', response.data);
-            })
-            .catch(error => {
-                console.error('Error posting data:', error);
-            });
-    };
+        .then(response => {
+            console.log('Post request successful:', response.data);
+            setLogButtonContent('Logged! Check Account For Details'); 
+            setTimeout(() => {
+                setLogButtonContent('Log Exercise'); 
+            }, 2000); 
+        })
+        .catch(error => {
+            console.error('Error posting data:', error);
+        });
+};
 
     const scales = ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aolian', 'Locrian', 'Blues'];
     
@@ -186,13 +191,15 @@ const ScaleGenerator = () => {
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
                 {state.user ? (
           
-          <button className={styles.logButton} onClick={handleScore}>Log Excercise</button>
-        
-      ) : (
-        
-          null
-        
-      )}
+          <button className={styles.logButton} onClick={handleScore}>
+          {logButtonContent}
+      </button>
+          
+        ) : (
+          
+            null
+          
+        )}
             </div>
         </div>
     );

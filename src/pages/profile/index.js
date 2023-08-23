@@ -115,10 +115,10 @@ const ProfilePage = () => {
     : 'User'}
 </p>
       <h2>Exercise History</h2>
-      <ul>
+      <ul className={styles.buttonGrid}>
         {userLogs.map((log, index) => (
           <li className={styles.box} key={index}>
-            <p>{log.exercise_id}</p>
+            <p className={styles.bold}>{log.exercise_id}</p>
             <p>{log.date_completed}</p>
             <p>{log.total_questions}</p>
             <p>{log.correct_answers}</p>

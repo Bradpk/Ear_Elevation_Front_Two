@@ -15,6 +15,7 @@ const IntervalGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Intervals');
+    const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
     
 
  
@@ -24,7 +25,7 @@ const IntervalGenerator = () => {
     const handleScore = () => {
         const user_id = state.user.user_id
         const data = {
-            exercise_id: `Excercise: ${exerciseName}`,
+            exercise_id: exerciseName,
             total_questions: `Attempted: ${attemptedQuestions}`,
             correct_answers: `Correct: ${correctAnswers}`,
             date_completed: currentDate.toISOString(),
@@ -32,13 +33,17 @@ const IntervalGenerator = () => {
 
         };
         axios.post('http://127.0.0.1:8000/api/user-logs/', data)
-            .then(response => {
-                console.log('Post request successful:', response.data);
-            })
-            .catch(error => {
-                console.error('Error posting data:', error);
-            });
-    };
+        .then(response => {
+            console.log('Post request successful:', response.data);
+            setLogButtonContent('Logged! Check Account For Details');
+            setTimeout(() => {
+                setLogButtonContent('Log Exercise');
+            }, 1500); 
+        })
+        .catch(error => {
+            console.error('Error posting data:', error);
+        });
+};
 //-----------------------------------------------------------------------------------------------------------------------------
     const intervals = ['m2', 'M2', 'm3', 'M3', 'P4', 'D5', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8'];
 
@@ -155,7 +160,9 @@ const IntervalGenerator = () => {
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
                 {state.user ? (
           
-            <button className={styles.logButton} onClick={handleScore}>Log Excercise</button>
+          <button className={styles.logButton} onClick={handleScore}>
+          {logButtonContent}
+      </button>
           
         ) : (
           
