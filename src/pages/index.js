@@ -25,7 +25,7 @@ export default function Page() {
   }, []);
   return (
     <div className={styles.all}>
-       <Navbar />
+       <Navbar/>
     <div className={styles.container}>
       <Image
         src="/ee.jpeg"

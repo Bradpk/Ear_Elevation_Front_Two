@@ -75,7 +75,16 @@ const ScaleGenerator = () => {
     };
 
     const playScale = (interval) => {
-        const synth = new Tone.Synth().toDestination();
+        const synth = new Tone.Synth({volume: -10,}).toDestination();
+        const reverb = new Tone.Reverb({
+            decay: 1.4, 
+            preDelay: 0.02,
+            wet: 0.9, 
+        }).toDestination();
+
+        synth.connect(reverb);
+        reverb.connect(Tone.Destination);
+        
         const now = Tone.now();
 
         switch (interval) {
