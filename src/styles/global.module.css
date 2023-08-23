@@ -4,7 +4,7 @@
     width: 100%;
     min-height: 100vh;
     font-family: 'Courier New', Courier, monospace;
-    background-image: linear-gradient(to bottom, rgba(38, 115, 148, 0.2), rgba(240, 247, 254, 0.2));
+    background-image: linear-gradient(to bottom, rgba(38, 115, 148, 0.3), rgba(251, 255, 189, 0.3));
 }
 
 /* background-color: rgb(240, 247, 254); */

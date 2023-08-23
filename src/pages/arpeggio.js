@@ -43,7 +43,7 @@ const ArpeggioGenerator = () => {
             exercise_id: exerciseName,
             total_questions: `Attempted: ${attemptedQuestions}`,
             correct_answers: `Correct: ${correctAnswers}`,
-            date_completed: currentDate.toISOString(),
+            date_completed: currentDate.toLocaleString(),
             user_id: user_id
 
         };
@@ -76,7 +76,7 @@ const ArpeggioGenerator = () => {
     const playArpeggio = (interval) => {
         const synth = new Tone.Synth({volume: -10,}).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 1.2, 
+            decay: 2.2, 
             preDelay: 0.01,
             wet: 1, 
         }).toDestination();

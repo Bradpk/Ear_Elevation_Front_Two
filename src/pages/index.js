@@ -34,7 +34,7 @@ export default function Page() {
         height={400}
         className={styles.image}
       />
-    </div>
+      </div>
     </div>
   );
 }

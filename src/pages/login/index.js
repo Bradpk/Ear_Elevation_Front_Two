@@ -93,7 +93,7 @@ function Page() {
                         />
                     </div>
                 </form>
-                <Link href="/register" classname={styles.link}>
+                <Link href="/register" className={styles.link}>
             Register Here
           </Link>
             </div>
