@@ -1,8 +1,26 @@
 import Link from "next/link";
 import Navbar from "../components/navbar";
 import styles from '../styles/about.module.css';
+import { useGlobalState } from '../context/GlobalState';
+import React, { useState, useEffect } from 'react'
+import jwtDecode from 'jwt-decode';
 
 export default function About() {
+    const {state, dispatch} = useGlobalState();
+    useEffect(() => {
+        const getUserFromLocalStorage = () => {
+          const userData = localStorage.getItem('user');
+          if (userData) {
+            const user = jwtDecode(userData);
+            console.log('User data:', user);
+            dispatch({
+                type: 'SET_USER',
+                payload: user
+            });
+          }
+        };
+        getUserFromLocalStorage();
+      }, []);
     return (
         <div>
             <Navbar />

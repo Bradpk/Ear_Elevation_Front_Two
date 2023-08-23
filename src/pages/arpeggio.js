@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Tone from 'tone';
 import Navbar from "../components/navbar";
 import styles from '../styles/arpeggio.module.css';
@@ -6,8 +6,24 @@ import { useRouter } from 'next/router';
 import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
 import axios from 'axios'; 
+import jwtDecode from 'jwt-decode';
 
 const ArpeggioGenerator = () => {
+    useEffect(() => {
+        const getUserFromLocalStorage = () => {
+          const userData = localStorage.getItem('user');
+          if (userData) {
+            const user = jwtDecode(userData);
+            console.log('User data:', user);
+            dispatch({
+                type: 'SET_USER',
+                payload: user
+            });
+          }
+        };
+        getUserFromLocalStorage();
+      }, []);
+
     const [generatedArpeggio, setGeneratedArpeggio] = useState('');
     const [previousArpeggio, setPreviousArpeggio] = useState('');
     const [selectedArpeggio, setSelectedArpeggio] = useState('');

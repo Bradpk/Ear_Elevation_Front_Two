@@ -8,6 +8,21 @@ import Link from 'next/link';
 import axios from 'axios'; 
 
 const ProfilePage = () => {
+  // useEffect(() => {
+  //   const getUserFromLocalStorage = () => {
+  //     const userData = localStorage.getItem('user');
+  //     if (userData) {
+  //       const user = jwtDecode(userData);
+  //       console.log('User data:', user);
+  //       dispatch({
+  //           type: 'SET_USER',
+  //           payload: user
+  //       });
+  //     }
+  //   };
+  //   getUserFromLocalStorage();
+  // }, []);
+
   const [postData, setPostData] = useState({ title: '', content: '' });
   const [fetchedData, setFetchedData] = useState([]);
   const [userLogs, setUserLogs] = useState([]);
