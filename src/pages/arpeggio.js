@@ -32,6 +32,7 @@ const ArpeggioGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Arpeggios');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
+    const percentage = (correctAnswers / attemptedQuestions) * 100;
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
@@ -76,7 +77,7 @@ const ArpeggioGenerator = () => {
     const playArpeggio = (interval) => {
         const synth = new Tone.Synth({volume: -10,}).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2.2, 
+            decay: 2, 
             preDelay: 0.01,
             wet: 1, 
         }).toDestination();
@@ -96,7 +97,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("B4", "4n", now + 2);
                 synth.triggerAttackRelease("G4", "4n", now + 2.4);
                 synth.triggerAttackRelease("E4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
             case 'Minor 7th':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -107,7 +108,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("A#4", "4n", now + 2);
                 synth.triggerAttackRelease("G4", "4n", now + 2.4);
                 synth.triggerAttackRelease("D#4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
             case 'Dominant 7th':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -118,7 +119,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("A#4", "4n", now + 2);
                 synth.triggerAttackRelease("G4", "4n", now + 2.4);
                 synth.triggerAttackRelease("E4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
             case 'Half-Dim 7th':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -129,7 +130,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("A#4", "4n", now + 2);
                 synth.triggerAttackRelease("F#4", "4n", now + 2.4);
                 synth.triggerAttackRelease("D#4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
             case 'Diminished 7th':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -140,7 +141,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("A4", "4n", now + 2);
                 synth.triggerAttackRelease("F#4", "4n", now + 2.4);
                 synth.triggerAttackRelease("D#4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
             case 'Minor-Major 7th':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -151,7 +152,7 @@ const ArpeggioGenerator = () => {
                 synth.triggerAttackRelease("B4", "4n", now + 2);
                 synth.triggerAttackRelease("G4", "4n", now + 2.4);
                 synth.triggerAttackRelease("D#4", "4n", now + 2.8);
-                synth.triggerAttackRelease("C4", "4n", now + 3.2);
+                synth.triggerAttackRelease("C4", "5n", now + 3.2);
                 break;
 
             default:
@@ -201,6 +202,7 @@ const ArpeggioGenerator = () => {
                     {arpeggioButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                <p className={styles.stats}>Percentage: {percentage.toFixed(1)}%</p>
                 {state.user ? (
           
           <button className={styles.logButton} onClick={handleScore}>

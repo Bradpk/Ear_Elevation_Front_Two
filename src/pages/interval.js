@@ -36,6 +36,7 @@ const IntervalGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Intervals');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
+    const percentage = (correctAnswers / attemptedQuestions) * 100;
     
 
  
@@ -81,7 +82,7 @@ const IntervalGenerator = () => {
     const playInterval = (interval) => {
         const synth = new Tone.Synth({volume: -10,}).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2.2, 
+            decay: 2, 
             preDelay: 0.01,
             wet: 1, 
         }).toDestination();
@@ -94,51 +95,51 @@ const IntervalGenerator = () => {
         switch (interval) {
             case 'm2':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('C#4', '4n', now + 0.5);
+                synth.triggerAttackRelease('C#4', '5n', now + 0.5);
                 break;
             case 'M2':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('D4', '4n', now + 0.5);
+                synth.triggerAttackRelease('D4', '5n', now + 0.5);
                 break;
             case 'm3':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('D#4', '4n', now + 0.5);
+                synth.triggerAttackRelease('D#4', '5n', now + 0.5);
                 break;
             case 'M3':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('E4', '4n', now + 0.5);
+                synth.triggerAttackRelease('E4', '5n', now + 0.5);
                 break;
             case 'P4':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('F4', '4n', now + 0.5);
+                synth.triggerAttackRelease('F4', '5n', now + 0.5);
                 break;
             case 'D5':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('F#4', '4n', now + 0.5);
+                synth.triggerAttackRelease('F#4', '5n', now + 0.5);
                 break;
             case 'P5':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('G4', '4n', now + 0.5);
+                synth.triggerAttackRelease('G4', '5n', now + 0.5);
                 break;
             case 'm6':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('G#4', '4n', now + 0.5);
+                synth.triggerAttackRelease('G#4', '5n', now + 0.5);
                 break;
             case 'M6':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('A4', '4n', now + 0.5);
+                synth.triggerAttackRelease('A4', '5n', now + 0.5);
                 break;
             case 'm7':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('A#4', '4n', now + 0.5);
+                synth.triggerAttackRelease('A#4', '5n', now + 0.5);
                 break;
             case 'M7':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('B4', '4n', now + 0.5);
+                synth.triggerAttackRelease('B4', '5n', now + 0.5);
                 break;
             case 'P8':
                 synth.triggerAttackRelease('C4', '4n', now);
-                synth.triggerAttackRelease('C5', '4n', now + 0.5);
+                synth.triggerAttackRelease('C5', '5n', now + 0.5);
                 break;
             default:
                 break;
@@ -187,6 +188,7 @@ const IntervalGenerator = () => {
                     {intervalButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                <p className={styles.stats}>Percentage: {percentage.toFixed(1)}%</p>
                 {state.user ? (
           
           <button className={styles.logButton} onClick={handleScore}>

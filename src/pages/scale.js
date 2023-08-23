@@ -32,6 +32,7 @@ const ScaleGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Scales');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
+    const percentage = (correctAnswers / attemptedQuestions) * 100;
     
 
     const router = useRouter();
@@ -78,7 +79,7 @@ const ScaleGenerator = () => {
     const playScale = (interval) => {
         const synth = new Tone.Synth({volume: -10,}).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2.2, 
+            decay: 2, 
             preDelay: 0.01,
             wet: 1, 
         }).toDestination();
@@ -97,7 +98,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("A4", "4n", now + 2);
                 synth.triggerAttackRelease("B4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Dorian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -107,7 +108,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("A4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Phrygian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -117,7 +118,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("G#4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Lydian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -127,7 +128,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("A4", "4n", now + 2);
                 synth.triggerAttackRelease("B4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Mixolydian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -137,7 +138,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("A4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Aolian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -147,7 +148,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("G#4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Locrian':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -157,7 +158,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("F#4", "4n", now + 1.6);
                 synth.triggerAttackRelease("G#4", "4n", now + 2);
                 synth.triggerAttackRelease("A#4", "4n", now + 2.4);
-                synth.triggerAttackRelease("C5", "4n", now + 2.8);
+                synth.triggerAttackRelease("C5", "5n", now + 2.8);
                 break;
             case 'Blues':
                 synth.triggerAttackRelease("C4", "4n", now);
@@ -166,7 +167,7 @@ const ScaleGenerator = () => {
                 synth.triggerAttackRelease("F#4", "4n", now + 1.2);
                 synth.triggerAttackRelease("G4", "4n", now + 1.6);
                 synth.triggerAttackRelease("A#4", "4n", now + 2);
-                synth.triggerAttackRelease("C5", "4n", now + 2.4);
+                synth.triggerAttackRelease("C5", "5n", now + 2.4);
                 break;
             default:
                 break;
@@ -215,6 +216,7 @@ const ScaleGenerator = () => {
                     {scaleButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+                <p className={styles.stats}>Percentage: {percentage.toFixed(1)}%</p>
                 {state.user ? (
           
           <button className={styles.logButton} onClick={handleScore}>
