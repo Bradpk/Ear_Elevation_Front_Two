@@ -2,9 +2,6 @@ import axios from 'axios'
 import authHeader from './auth.headers';
 import { API_URL, REFRESH_ENDPOINT } from './auth.constants';
 
-/**
- * Create an Axios Client with defaults
- */
 const client = axios.create({
   baseURL: API_URL,
 });

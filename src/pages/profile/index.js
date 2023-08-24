@@ -6,8 +6,12 @@ import styles from './profile.module.css';
 import jwtDecode from 'jwt-decode';
 import Link from 'next/link';
 import axios from 'axios'; 
-
+//------------------------------------------------------------------------------------------------------------------------------
 const ProfilePage = () => {
+  const [fetchedData, setFetchedData] = useState([]);
+  const [userLogs, setUserLogs] = useState([]);
+  const {state, dispatch} = useGlobalState();
+//------------------------------------------------------------------------------------------------------------------------------
   useEffect(() => {
     const getUserFromLocalStorage = () => {
       const userData = localStorage.getItem('user');
@@ -23,16 +27,11 @@ const ProfilePage = () => {
     getUserFromLocalStorage();
   }, []);
 
-  const [postData, setPostData] = useState({ title: '', content: '' });
-  const [fetchedData, setFetchedData] = useState([]);
-  const [userLogs, setUserLogs] = useState([]);
-  const {state, dispatch} = useGlobalState();
-  
   useEffect(() => {
     getName();
     fetchUserLogs();
   }, [state.user]); 
-//----------------------
+//------------------------------------------------------------------------------------------------------------------------------
   const getName = async () => {
     try {
       console.log(state)
@@ -49,28 +48,7 @@ const ProfilePage = () => {
       console.error('Error fetching data:', error);
     }
   };
-//-----------------------
-  // const handleFormSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const response = await axios.post('http://127.0.0.1:8000/api/test/', postData);
-  //     console.log('Post request response:', response.data);
-  //     fetchPosts(); 
-  //   } catch (error) {
-  //     console.error('Error making post request:', error);
-  //   }
-  // };
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setPostData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-  //------
-
+//------------------------------------------------------------------------------------------------------------------------------
   const fetchUserLogs = async () => {
     try {
       const user_id = state.user.user_id; 
@@ -80,50 +58,28 @@ const ProfilePage = () => {
       console.error('Error fetching user logs:', error);
     }
   };
-
-  useEffect(() => {
-    getName();
-    fetchUserLogs(); 
-  }, []);
-
-  //-------------
-  const deleteLog = async (logId) => {
+//------------------------------------------------------------------------------------------------------------------------------
+  const deleteLog = async (logId, index) => {
     try {
-      const response = await axios.delete(`http://127.0.0.1:8000/api/user-logs/${logId}`);
+      setUserLogs((prevLogs) =>
+        prevLogs.map((log, i) =>
+          i === index ? { ...log, deleting: true } : log
+        )
+      );
+  
+      await new Promise((resolve) => setTimeout(resolve, 250));
+      await axios.delete(`http://127.0.0.1:8000/api/user-logs/${logId}`);
+  
       setUserLogs((prevLogs) => prevLogs.filter((log) => log.log_id !== logId));
     } catch (error) {
       console.error('Error deleting user log:', error);
     }
   };
-
+//------------------------------------------------------------------------------------------------------------------------------
   return (
     <div>
       <Navbar />
       <div className={styles.container}>
-      {/* <h2>New Post</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={postData.title}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Content</label>
-          <textarea
-            id="content"
-            name="content"
-            value={postData.content}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Create Post</button>
-      </form> */}
-
       <h2>Welcome!</h2>
       <p>
   {state.user && state.user.data
@@ -133,14 +89,23 @@ const ProfilePage = () => {
       <h2>Exercise History</h2>
       <ul className={styles.buttonGrid}>
         {userLogs.map((log, index) => (
-          <li className={styles.box} key={index}>
+         <li
+         className={`${styles.box} ${log.deleting ? styles.deleting : ''}`}
+         key={index}
+       >
             <p className={styles.bold}>{log.exercise_id}</p>
             <p>{log.date_completed}</p>
             <p>{log.total_questions}</p>
             <p>{log.correct_answers}</p>
-            <button className={styles.button} onClick={() => deleteLog(log.log_id)}>Delete</button> 
-          </li>
-        ))}
+            <p>{log.percentage_correct}%</p>
+            <button
+      className={styles.button}
+      onClick={() => deleteLog(log.log_id, index)}
+    >
+      Delete
+    </button>
+  </li>
+))}
       </ul>
     </div>
     </div>

@@ -4,9 +4,8 @@ import { useRouter } from "next/navigation";
 import { useGlobalState } from "../../context/GlobalState";
 import Navbar from '../../components/navbar';
 import styles from './register.module.css';
-
 import jwtDecode from 'jwt-decode';
-
+//------------------------------------------------------------------------------------------------------------------------------
 function Register() {
   const {state, dispatch} = useGlobalState();
   const router = useRouter();
@@ -18,14 +17,14 @@ function Register() {
     email: "",
     username: "",
   });
-
+//------------------------------------------------------------------------------------------------------------------------------
   const handleChange = (key, value) => {
     setUser({
       ...user,
       [key]: value,
     });
   };
-
+//------------------------------------------------------------------------------------------------------------------------------
   async function handleRegister(e) {
     e.preventDefault();
     
@@ -49,8 +48,7 @@ function Register() {
       console.error('Registration failed:', error);
     }
   }
-
-
+//------------------------------------------------------------------------------------------------------------------------------
   return (
     <div className="w-screen h-screen">
       <Navbar />

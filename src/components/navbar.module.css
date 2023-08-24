@@ -1,5 +1,5 @@
 .Navbar {
-  background-color: rgb(38, 115, 148);;
+  background-color: rgb(38, 115, 148);
   padding: 1rem;
 }
 
@@ -16,7 +16,7 @@
   color: rgb(240, 247, 254);
   font-weight: bold;
   transition: font-size 0.2s ease-in-out;
-  line-height: 41px; 
+  line-height: 41px;
 }
 
 .Navbar a:hover {
@@ -29,7 +29,7 @@
   color: rgb(240, 247, 254);
   font-weight: bold;
   transition: font-size 0.2s ease-in-out;
-  line-height: 41px; 
+  line-height: 41px;
 }
 
 .logout:hover {

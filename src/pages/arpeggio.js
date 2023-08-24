@@ -5,24 +5,24 @@ import styles from '../styles/arpeggio.module.css';
 import { useRouter } from 'next/router';
 import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
-import axios from 'axios'; 
+import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-
+//------------------------------------------------------------------------------------------------------------------------------
 const ArpeggioGenerator = () => {
     useEffect(() => {
         const getUserFromLocalStorage = () => {
-          const userData = localStorage.getItem('user');
-          if (userData) {
-            const user = jwtDecode(userData);
-            console.log('User data:', user);
-            dispatch({
-                type: 'SET_USER',
-                payload: user
-            });
-          }
+            const userData = localStorage.getItem('user');
+            if (userData) {
+                const user = jwtDecode(userData);
+                console.log('User data:', user);
+                dispatch({
+                    type: 'SET_USER',
+                    payload: user
+                });
+            }
         };
         getUserFromLocalStorage();
-      }, []);
+    }, []);
 
     const [generatedArpeggio, setGeneratedArpeggio] = useState('');
     const [previousArpeggio, setPreviousArpeggio] = useState('');
@@ -31,13 +31,13 @@ const ArpeggioGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Arpeggios');
-    const [logButtonContent, setLogButtonContent] = useState('Log Exercise'); 
-    const percentage = (correctAnswers / attemptedQuestions) * 100;
+    const [logButtonContent, setLogButtonContent] = useState('Log Exercise');
+    const percentage = Number((correctAnswers / attemptedQuestions * 100).toFixed(1));
 
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
 
-    // ------ Between these lines needs to be converted into an axios post request
+    //------------------------------------------------------------------------------------------------------------------------------
     const handleScore = () => {
         const user_id = state.user.user_id
         const data = {
@@ -45,21 +45,22 @@ const ArpeggioGenerator = () => {
             total_questions: `Attempted: ${attemptedQuestions}`,
             correct_answers: `Correct: ${correctAnswers}`,
             date_completed: currentDate.toLocaleString(),
+            percentage_correct: percentage,
             user_id: user_id
 
         };
         axios.post('http://127.0.0.1:8000/api/user-logs/', data)
-        .then(response => {
-            console.log('Post request successful:', response.data);
-            setLogButtonContent('Logged! Check Account For Details'); 
-            setTimeout(() => {
-                setLogButtonContent('Log Exercise'); 
-            }, 2000); 
-        })
-        .catch(error => {
-            console.error('Error posting data:', error);
-        });
-};
+            .then(response => {
+                console.log('Post request successful:', response.data);
+                setLogButtonContent('Logged! Check Account For Details');
+                setTimeout(() => {
+                    setLogButtonContent('Log Exercise');
+                }, 2000);
+            })
+            .catch(error => {
+                console.error('Error posting data:', error);
+            });
+    };
 
     const arpeggios = ['Major 7th', 'Minor 7th', 'Dominant 7th', 'Half-Dim 7th', 'Diminished 7th', 'Minor-Major 7th'];
 
@@ -75,16 +76,16 @@ const ArpeggioGenerator = () => {
     };
 
     const playArpeggio = (interval) => {
-        const synth = new Tone.Synth({volume: -10,}).toDestination();
+        const synth = new Tone.Synth({ volume: -10, }).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2, 
+            decay: 2,
             preDelay: 0.01,
-            wet: 1, 
+            wet: 1,
         }).toDestination();
 
         synth.connect(reverb);
         reverb.connect(Tone.Destination);
-        
+
         const now = Tone.now();
 
         switch (interval) {
@@ -189,7 +190,7 @@ const ArpeggioGenerator = () => {
             {arpeggio}
         </button>
     ));
-
+    //------------------------------------------------------------------------------------------------------------------------------
     return (
         <div>
             <Navbar />
@@ -202,18 +203,15 @@ const ArpeggioGenerator = () => {
                     {arpeggioButtons}
                 </div>
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
-                <p className={styles.stats}>Percentage: {percentage.toFixed(1)}%</p>
+                <p className={styles.stats}>Percentage: {percentage}%</p>
                 {state.user ? (
-          
-          <button className={styles.logButton} onClick={handleScore}>
-          {logButtonContent}
-      </button>
-          
-        ) : (
-          
-            null
-          
-        )}
+
+                    <button className={styles.logButton} onClick={handleScore}>
+                        {logButtonContent}
+                    </button>
+                ) : (
+                    null
+                )}
             </div>
         </div>
     );

@@ -6,98 +6,80 @@ import Navbar from '../../components/navbar';
 import jwtDecode from 'jwt-decode';
 import styles from './login.module.css';
 import Link from 'next/link';
-
+//------------------------------------------------------------------------------------------------------------------------------
 function Page() {
     const router = useRouter();
-
-    const {state, dispatch} = useGlobalState();
-
+    const { state, dispatch } = useGlobalState();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [username, setUsername] = useState("");
-
+//------------------------------------------------------------------------------------------------------------------------------
     const handleLogin = (e) => {
         e.preventDefault();
         const username = email;
         authService
-          .login(email, password, username)
-          .then(async (resp) => {
-            console.log(resp);
-            if (resp.access) {
-              let data = jwtDecode(resp.access);
-              await dispatch({
-                type: 'SET_USER',
-                payload: data,
-              });
-              router.push('/');
-            } else {
-              console.log('Login failed');
-              dispatch({ type: 'LOGOUT_USER' }); 
-            }
-          });
-      };
-      
-
-
+            .login(email, password, username)
+            .then(async (resp) => {
+                console.log(resp);
+                if (resp.access) {
+                    let data = jwtDecode(resp.access);
+                    await dispatch({
+                        type: 'SET_USER',
+                        payload: data,
+                    });
+                    router.push('/');
+                } else {
+                    console.log('Login failed');
+                    dispatch({ type: 'LOGOUT_USER' });
+                }
+            });
+    };
+//------------------------------------------------------------------------------------------------------------------------------
     return (
         <div>
-           <Navbar />
+            <Navbar />
             <div className={styles.container}>
-            <h1>Login</h1>
-            <div className='flex'>
-                <form
-                    onSubmit={handleLogin}
-                    className='mx-auto my-auto border-2 bg-mtgray'
-                >
-                    <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="email">Email:</label><br></br>
-                        <input
-                            className='border'
-                            type="text"
-                            id="email"
-                            name="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        
-                        {/* <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="usernamel">Username:</label><br></br>
-                        <input
-                            className='border'
-                            type="text"
-                            id="username"
-                            name="username"
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        /> */}
-                        
-                    
-                    </div>
-                    <div className='flex justify-between m-2 items-center space-x-2'>
-                        <label htmlFor="pass">Password:</label><br></br>
-                        <input
-                            className='border'
-                            type="password"
-                            id="pass"
-                            name="password"
-                            minLength="8"
-                            required
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className='flex'>
-                        <input
-                            className={styles.button}
-                            type="submit"
-                            value="Sign in"
-                        />
-                    </div>
-                </form>
-                <Link href="/register" className={styles.link}>
-            Register Here
-          </Link>
+                <h1>Login</h1>
+                <div className='flex'>
+                    <form
+                        onSubmit={handleLogin}
+                        className='mx-auto my-auto border-2 bg-mtgray'
+                    >
+                        <div className='flex justify-between m-2 items-center space-x-2'>
+                            <label htmlFor="email">Email:</label><br></br>
+                            <input
+                                className='border'
+                                type="text"
+                                id="email"
+                                name="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                        </div>
+                        <div className='flex justify-between m-2 items-center space-x-2'>
+                            <label htmlFor="pass">Password:</label><br></br>
+                            <input
+                                className='border'
+                                type="password"
+                                id="pass"
+                                name="password"
+                                minLength="8"
+                                required
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div className='flex'>
+                            <input
+                                className={styles.button}
+                                type="submit"
+                                value="Sign in"
+                            />
+                        </div>
+                    </form>
+                    <Link href="/register" className={styles.link}>
+                        Register Here
+                    </Link>
+                </div>
             </div>
-        </div>
         </div>
     )
 }

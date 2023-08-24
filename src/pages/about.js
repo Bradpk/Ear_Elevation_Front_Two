@@ -4,7 +4,7 @@ import styles from '../styles/about.module.css';
 import { useGlobalState } from '../context/GlobalState';
 import React, { useState, useEffect } from 'react'
 import jwtDecode from 'jwt-decode';
-
+//------------------------------------------------------------------------------------------------------------------------------
 export default function About() {
     const {state, dispatch} = useGlobalState();
     useEffect(() => {
@@ -21,6 +21,7 @@ export default function About() {
         };
         getUserFromLocalStorage();
       }, []);
+//------------------------------------------------------------------------------------------------------------------------------
     return (
         <div>
             <Navbar />

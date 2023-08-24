@@ -7,8 +7,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 import AuthService from '../services/auth.service';
 import { useGlobalState } from '../context/GlobalState';
-
-
+//------------------------------------------------------------------------------------------------------------------------------
 const Navbar = () => {
   const router = useRouter();
   const { state, dispatch } = useGlobalState();
@@ -18,7 +17,7 @@ const Navbar = () => {
     dispatch({ type: 'LOGOUT_USER' });
     router.push('/');
   };
-
+  //------------------------------------------------------------------------------------------------------------------------------
   return (
     <nav className={styles.Navbar}>
       <ul>
@@ -37,9 +36,6 @@ const Navbar = () => {
           <Link href="/arpeggio">Arpeggios</Link>
         </li>
         <li>
-          <Link href="/loop">Loop</Link>
-        </li>
-        <li>
           <Link href="/about">About</Link>
         </li>
         {state.user ? (
@@ -51,12 +47,12 @@ const Navbar = () => {
             <Link href="/login">Login</Link>
           </li>
         )}
-    
-  {state.user ? (
-    <Link href="/profile">
-      <FontAwesomeIcon icon={faUser} style={{ color: "#feffff" }} />
-    </Link>
-  ) : null}
+
+        {state.user ? (
+          <Link href="/profile">
+            <FontAwesomeIcon icon={faUser} style={{ color: "#feffff" }} />
+          </Link>
+        ) : null}
 
       </ul>
     </nav>
