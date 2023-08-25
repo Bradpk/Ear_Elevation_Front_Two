@@ -8,6 +8,7 @@ import jwtDecode from 'jwt-decode';
 import React, { useState, useEffect } from 'react'
 //------------------------------------------------------------------------------------------------------------------------------
 export default function Page() {
+//------------------------------------------------------------------------------------------------------------------------------
   const { state, dispatch } = useGlobalState();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export default function Page() {
   }, []);
 //------------------------------------------------------------------------------------------------------------------------------
   return (
-    <div className={styles.all}>
+    <div>
       <Navbar />
       <div className={`container ${styles.container}`}>
         <Image

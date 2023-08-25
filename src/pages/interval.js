@@ -33,7 +33,7 @@ const IntervalGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Intervals');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise');
-    const percentage = Number((correctAnswers / attemptedQuestions * 100).toFixed(1));
+    const percentage = attemptedQuestions > 0 ? Number((correctAnswers / attemptedQuestions * 100).toFixed(1)) : 0;
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ const IntervalGenerator = () => {
     const playInterval = (interval) => {
         const synth = new Tone.Synth({ volume: -10, }).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2,
+            decay: 2.2,
             preDelay: 0.01,
             wet: 1,
         }).toDestination();

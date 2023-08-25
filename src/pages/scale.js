@@ -33,7 +33,7 @@ const ScaleGenerator = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Scales');
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise');
-    const percentage = Number((correctAnswers / attemptedQuestions * 100).toFixed(1));
+    const percentage = attemptedQuestions > 0 ? Number((correctAnswers / attemptedQuestions * 100).toFixed(1)) : 0;
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
     const [synth, setSynth] = useState(null);
@@ -78,7 +78,7 @@ const ScaleGenerator = () => {
     const playScale = (interval) => {
         const synth = new Tone.Synth({ volume: -10, }).toDestination();
         const reverb = new Tone.Reverb({
-            decay: 2,
+            decay: 2.2,
             preDelay: 0.01,
             wet: 1,
         }).toDestination();
