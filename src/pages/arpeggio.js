@@ -9,6 +9,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 //------------------------------------------------------------------------------------------------------------------------------
 const ArpeggioGenerator = () => {
+//-----------------------------------------------------------------------------------------------------------------------------    
     useEffect(() => {
         const getUserFromLocalStorage = () => {
             const userData = localStorage.getItem('user');
@@ -23,7 +24,7 @@ const ArpeggioGenerator = () => {
         };
         getUserFromLocalStorage();
     }, []);
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const [generatedArpeggio, setGeneratedArpeggio] = useState('');
     const [previousArpeggio, setPreviousArpeggio] = useState('');
     const [selectedArpeggio, setSelectedArpeggio] = useState('');
@@ -61,7 +62,7 @@ const ArpeggioGenerator = () => {
                 console.error('Error posting data:', error);
             });
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const arpeggios = ['Major 7th', 'Minor 7th', 'Dominant 7th', 'Half-Dim 7th', 'Diminished 7th', 'Minor-Major 7th'];
 
     const generateRandomArpeggio = () => {
@@ -74,7 +75,7 @@ const ArpeggioGenerator = () => {
         setPreviousArpeggio(randomArpeggio);
         playArpeggio(randomArpeggio);
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const playArpeggio = (interval) => {
         const synth = new Tone.Synth({ volume: -10, }).toDestination();
         const reverb = new Tone.Reverb({
@@ -160,7 +161,7 @@ const ArpeggioGenerator = () => {
                 break;
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const handleArpeggioSelection = (arpeggio, index) => {
         setSelectedArpeggio(arpeggio);
         setAttemptedQuestions(attemptedQuestions + 1);
@@ -179,7 +180,7 @@ const ArpeggioGenerator = () => {
             }, 400);
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const arpeggioButtons = arpeggios.map((arpeggio, index) => (
         <button
             key={index}
@@ -190,7 +191,7 @@ const ArpeggioGenerator = () => {
             {arpeggio}
         </button>
     ));
-    //------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
     return (
         <div>
             <Navbar />

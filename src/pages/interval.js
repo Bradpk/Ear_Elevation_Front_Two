@@ -9,6 +9,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 //-----------------------------------------------------------------------------------------------------------------------------
 const IntervalGenerator = () => {
+//-----------------------------------------------------------------------------------------------------------------------------
     useEffect(() => {
         const getUserFromLocalStorage = () => {
             const userData = localStorage.getItem('user');
@@ -23,7 +24,7 @@ const IntervalGenerator = () => {
         };
         getUserFromLocalStorage();
     }, []);
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const [generatedInterval, setGeneratedInterval] = useState('');
     const [previousInterval, setPreviousInterval] = useState('');
     const [selectedInterval, setSelectedInterval] = useState('');
@@ -38,6 +39,7 @@ const IntervalGenerator = () => {
 //-----------------------------------------------------------------------------------------------------------------------------
     const handleScore = () => {
         const user_id = state.user.user_id
+        console.log(state.user)
         const data = {
             exercise_id: exerciseName,
             total_questions: `Attempted: ${attemptedQuestions}`,
@@ -45,7 +47,6 @@ const IntervalGenerator = () => {
             date_completed: currentDate.toLocaleString(),
             percentage_correct: percentage,
             user_id: user_id
-
         };
         axios.post('http://127.0.0.1:8000/api/user-logs/', data)
             .then(response => {
@@ -170,28 +171,28 @@ const IntervalGenerator = () => {
         </button>
     ));
 //-----------------------------------------------------------------------------------------------------------------------------
-    return (
-        <div>
-            <Navbar />
-            <div className={styles.container}>
-                <h2 className={styles.heading}>Interval Generator</h2>
-                <button onClick={generateRandomInterval} className={styles.button}>Generate Random Interval</button>
-                <div className={styles.space}></div>
-                <button onClick={() => playInterval(generatedInterval)} className={styles.button}>Replay Interval</button>
-                <div className={styles.buttonGrid}>
-                    {intervalButtons}
-                </div>
-                <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
-                <p className={styles.stats}>Percentage: {percentage}%</p>
-                {state.user ? (
-                    <button className={styles.logButton} onClick={handleScore}>
-                        {logButtonContent}
-                    </button>
-                ) : (
-                    null
-                )}
+return (
+    <div>
+        <Navbar />
+        <div className={styles.container}>
+            <h2 className={styles.heading}>Interval Generator</h2>
+            <button onClick={generateRandomInterval} className={styles.button}>Generate Random Interval</button>
+            <div className={styles.space}></div>
+            <button onClick={() => playInterval(generatedInterval)} className={styles.button}>Replay Interval</button>
+            <div className={styles.buttonGrid}>
+                {intervalButtons}
             </div>
+            <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
+            <p className={styles.stats}>Percentage: {percentage}%</p>
+            {state.user ? (
+                <button className={styles.logButton} onClick={handleScore}>
+                    {logButtonContent}
+                </button>
+            ) : (
+                null
+            )}
         </div>
-    );
+    </div>
+);
 };
 export default IntervalGenerator;

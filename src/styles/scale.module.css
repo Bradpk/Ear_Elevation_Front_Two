@@ -23,7 +23,12 @@
     grid-gap: 10px;
     justify-content: center;
     margin-top: 10px;
+}
 
+@media (max-width: 768px) {
+    .buttonGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 
@@ -35,7 +40,6 @@
     border-radius: 10px;
     color: rgb(240, 247, 254);
     background-color: rgb(38, 115, 148);
-    ;
 }
 
 .button:hover {
@@ -49,7 +53,6 @@
     border: none;
     border-radius: 10px;
     color: rgb(38, 115, 148);
-    ;
 }
 
 .scaleButton:hover:not(.correct):not(.incorrect) {

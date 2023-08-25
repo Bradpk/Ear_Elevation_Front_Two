@@ -81,7 +81,7 @@ const ProfilePage = () => {
       <Navbar />
       <div className={styles.container}>
       <h2>Welcome!</h2>
-      <p>
+      <p className={styles.name}>
   {state.user && state.user.data
     ? `${state.user.data.first_name}, ${state.user.data.last_name}`
     : 'User'}

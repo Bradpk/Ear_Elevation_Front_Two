@@ -25,6 +25,12 @@
     margin-top: 10px;
 }
 
+@media (max-width: 768px) {
+    .buttonGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 
 .button {
     margin: 10px;
@@ -34,7 +40,6 @@
     border-radius: 10px;
     color: rgb(240, 247, 254);
     background-color: rgb(38, 115, 148);
-    ;
 }
 
 .button:hover {

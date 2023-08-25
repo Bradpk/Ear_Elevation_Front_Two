@@ -27,7 +27,6 @@ function Register() {
 //------------------------------------------------------------------------------------------------------------------------------
   async function handleRegister(e) {
     e.preventDefault();
-    
     try {
       await AuthService.register(user);
       

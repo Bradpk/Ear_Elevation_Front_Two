@@ -9,6 +9,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 //------------------------------------------------------------------------------------------------------------------------------
 const ScaleGenerator = () => {
+//-----------------------------------------------------------------------------------------------------------------------------
     useEffect(() => {
         const getUserFromLocalStorage = () => {
             const userData = localStorage.getItem('user');
@@ -23,7 +24,7 @@ const ScaleGenerator = () => {
         };
         getUserFromLocalStorage();
     }, []);
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const [generatedScale, setGeneratedScale] = useState('');
     const [previousScale, setPreviousScale] = useState('');
     const [selectedScale, setSelectedScale] = useState('');
@@ -35,6 +36,7 @@ const ScaleGenerator = () => {
     const percentage = Number((correctAnswers / attemptedQuestions * 100).toFixed(1));
     const router = useRouter();
     const { state, dispatch } = useGlobalState();
+    const [synth, setSynth] = useState(null);
 //------------------------------------------------------------------------------------------------------------------------------
     const handleScore = () => {
         const user_id = state.user.user_id
@@ -59,9 +61,8 @@ const ScaleGenerator = () => {
                 console.error('Error posting data:', error);
             });
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const scales = ['Ionian', 'Dorian', 'Phrygian', 'Lydian', 'Mixolydian', 'Aolian', 'Locrian', 'Blues'];
-
 
     const generateRandomScale = () => {
         let randomScale = previousScale;
@@ -171,7 +172,7 @@ const ScaleGenerator = () => {
                 break;
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const handleScaleSelection = (scale, index) => {
         setSelectedScale(scale);
         setAttemptedQuestions(attemptedQuestions + 1);
@@ -190,7 +191,7 @@ const ScaleGenerator = () => {
             }, 400);
         }
     };
-
+//-----------------------------------------------------------------------------------------------------------------------------
     const scaleButtons = scales.map((scale, index) => (
         <button
             key={index}
