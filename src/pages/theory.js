@@ -30,41 +30,35 @@ export default function About() {
                 <p>For those either new to music theory or for those who want a refresher here is a break down of some of the most essential concepts in music.</p>
        <h4>Notes and Scales:</h4>
 
-<p>Imagine music as a magical language, and notes are its alphabet. Just like letters make up words, notes make up music. We have 7 main letters in this musical alphabet: A, B, C, D, E, F, and G. But, here's the twist: they can wear special outfits called sharps (#) or flats (b), which give them a unique flavor.
-
-Now, let's create a musical ladder called a scale. Think of it as a set of steps, but instead of climbing, you're playing notes. The most famous scale is the "happy" major scale. It's like a secret code: you take a big step, then a big step, then a little step, and so on. This sequence creates a happy feeling when you hear it. There are other scales, too, like the "thoughtful" minor scale with a different step pattern, making it sound a bit sad or serious.</p>
+<p>In music theory, notes serve as the fundamental building blocks of musical composition. These notes are represented by the letters A, B, C, D, E, F, and G. However, notes can be modified by accidentals, namely sharps (#) and flats (b), which raise or lower their pitch respectively. Scales are sequences of these notes that form a musical framework. The major scale, for instance, is constructed using a specific pattern of whole and half steps, resulting in a sequence that imparts a sense of brightness. On the other hand, the minor scale follows a different pattern, producing a relatively somber or pensive mood.</p>
 
 <h4>Intervals:</h4>
 
-<p>Imagine you have two friends, and you're holding hands while standing on different steps of that musical ladder. The distance between you two is called an interval. Some intervals sound close, like being right next to each other, while others are like stretching out your arms to touch fingertips.
-
-There are big intervals, like when you skip a few steps, and small intervals, when you're right next to each other. Each interval has its own character. For example, a big skip might sound cheerful, while a small step could feel cozy.</p>
+<p>Intervals refer to the measurable distance between two notes in terms of pitch. These intervals can be categorized as either small (minor seconds, major seconds) or large (minor thirds, major thirds, perfect fourths, perfect fifths, etc.). Each interval contributes to the overall harmonic texture of a musical piece, with the size of the interval often influencing its emotional quality.</p>
 
 <h4>Chords:</h4>
 
-<p>Now, let's have a little party with your musical friends! When you play certain notes together, it's like they're holding hands and having a good time. We call these groups of notes "chords." The basic chord is a triad, like a musical trio. You have the main note, then one note skipping a step, and another note skipping two steps. Different combinations create different vibes – some sound happy, others sound sad, and some even sound a bit mysterious.</p>
+<p>Chords are combinations of three or more notes played simultaneously. The most basic type is the triad, consisting of a root note, a third interval above the root, and a fifth interval above the root. Chords are integral to harmonies in music and are organized based on their respective degrees within a scale. Different chord progressions produce distinct emotional impressions, with the quality of the chord (major, minor, diminished, augmented) playing a significant role.</p>
 
 <h4>Key Signatures:</h4>
 
-<p>Imagine you're telling a musical story, and the main character is a note. The key signature is like the costume the character wears. It tells you which notes will be sharp or flat in the story. Each key has its own set of sharps or flats, which give the music its unique feel. So when you see those sharps or flats at the beginning of a piece, you know what kind of adventure you're about to go on.</p>
+<p>Key signatures determine the tonal center, or the primary note around which a musical piece revolves. Each key has a specific arrangement of sharps or flats that define its tonality. The key signature guides which notes are naturally altered throughout the composition, either through sharps or flats, which in turn affects the overall sound and character of the piece.</p>
 
 <h4>Harmony:</h4>
 
-<p>Let's say you and your friends are singing different parts of a song at the same time. The way your voices blend together is harmony. It's like a bunch of colors creating a beautiful painting. Chords are like the main colors you use, and how you mix them creates the overall mood of the music – whether it's joyful, peaceful, or maybe a little mysterious.</p>
+<p>Harmony involves the simultaneous sounding of different notes to create chords and progressions. The interaction of these chords generates harmonies, which contribute to the texture and emotional impact of the music. Harmonic analysis evaluates the relationships between chords and their movement, enriching the understanding of a piece's structural elements.</p>
 
 <h4>Chord Progressions:</h4>
 
-<p>Think of chord progressions as a musical journey. You start somewhere familiar (home), then visit other places (chords) to explore. Some places feel stable, like a cozy house, while others feel like you're standing on the edge of a cliff, creating a bit of excitement. But in the end, you usually want to come back home to that comfy starting point.</p>
+<p>Chord progressions are sequences of chords that establish a musical journey. The succession of chords determines the flow and narrative of the composition. The choice of chords and their order influences the sense of tension, release, and resolution throughout the piece, guiding the listener through varying emotional states.</p>
 
 <h4>Rhythm:</h4>
 
-<p>Imagine music as a dance party, and rhythm is the way you move your feet. You have a steady beat like a heart thumping, and notes are your dance steps. Some steps are short, like quick jumps, and some are long, like big leaps. Combining these steps in different ways creates rhythms – just like dancing to your own beat.</p>
+<p>Rhythm encompasses the temporal aspect of music, involving the arrangement of notes and silences over time. Musical rhythm is organized by patterns of duration, accent, and meter. Meter is defined by time signatures, which indicate the number of beats per measure and the rhythmic value assigned to each beat. Rhythmic intricacies contribute to the groove and pacing of a musical work.</p>
 
 <h4>Time Signatures:</h4>
 
-<p>Time signatures are like a musical clock. They tell you how many beats are in each measure and which note gets the beat. Imagine a slice of time, and you're fitting a certain number of beats into it. So, it's like saying, "Let's have 4 heartbeats in this slice, and we'll count them with the snap of a quarter note." It's the rhythm that makes you tap your foot to the music.
-
-Remember, learning music is like unlocking a treasure chest of sounds and stories. These concepts are like keys that open different doors to musical understanding. As you explore, you'll discover endless ways to create and enjoy the magic of music.</p>
+<p>Time signatures indicate the rhythmic framework within a musical composition. They consist of two numbers, with the top number representing the number of beats in a measure and the bottom number designating the rhythmic value of each beat. Time signatures dictate the structure and feel of the rhythm, influencing the listener's perception of musical time and phrasing.</p>
             </div>
         </div>
     );

@@ -26,6 +26,7 @@ export default function About() {
         <div>
             <Navbar />
             <div className={styles.container}>
+                <h2>Ear Elevation: Elevating Musicians Auditory Skills</h2><br></br>
                 <p>
                     Ear Elevation offers a set of exercises tailored to musicians, aiming to enhance their auditory recognition skills. By mastering the identification of intervals, scales, and arpeggios, individuals can map these skills onto their instrument and with enough practive, develop the ability to play by ear.</p>
 
