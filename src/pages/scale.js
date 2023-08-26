@@ -209,7 +209,6 @@ const ScaleGenerator = () => {
             <div className={styles.container}>
                 <h2 className={styles.heading}>Scale Generator</h2>
                 <button onClick={generateRandomScale} className={styles.button}>Generate Random Scale</button>
-                <div className={styles.space}></div>
                 <button onClick={() => playScale(generatedScale)} className={styles.button}>Replay Scale</button>
                 <div className={styles.buttonGrid}>
                     {scaleButtons}

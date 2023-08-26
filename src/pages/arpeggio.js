@@ -196,7 +196,6 @@ const ArpeggioGenerator = () => {
             <div className={styles.container}>
                 <h2 className={styles.heading}>Arpeggio Generator</h2>
                 <button onClick={generateRandomArpeggio} className={styles.button}>Generate Random Arpeggio</button>
-                <div className={styles.space}></div>
                 <button onClick={() => playArpeggio(generatedArpeggio)} className={styles.button}>Replay Arpeggio</button>
                 <div className={styles.buttonGrid}>
                     {arpeggioButtons}

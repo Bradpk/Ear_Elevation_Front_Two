@@ -177,7 +177,6 @@ return (
         <div className={styles.container}>
             <h2 className={styles.heading}>Interval Generator</h2>
             <button onClick={generateRandomInterval} className={styles.button}>Generate Random Interval</button>
-            <div className={styles.space}></div>
             <button onClick={() => playInterval(generatedInterval)} className={styles.button}>Replay Interval</button>
             <div className={styles.buttonGrid}>
                 {intervalButtons}

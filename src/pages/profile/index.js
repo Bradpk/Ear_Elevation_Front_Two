@@ -87,7 +87,7 @@ const ProfilePage = () => {
     : 'User'}
 </p>
       <h2>Exercise History</h2>
-      <ul className={styles.buttonGrid}>
+      <div className={styles.buttonGrid}>
         {userLogs.map((log, index) => (
          <li
          className={`${styles.box} ${log.deleting ? styles.deleting : ''}`}
@@ -106,12 +106,10 @@ const ProfilePage = () => {
     </button>
   </li>
 ))}
-      </ul>
+      </div>
     </div>
     </div>
   );
 };
 
 export default ProfilePage;
-
-

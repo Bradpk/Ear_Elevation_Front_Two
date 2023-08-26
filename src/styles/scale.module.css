@@ -25,13 +25,6 @@
     margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-    .buttonGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
 .button {
     margin: 10px;
     padding: 15px 30px;
@@ -75,4 +68,16 @@
 
 .logButton:hover:not(.correct):not(.incorrect) {
     background-color: rgba(38, 115, 148, 0.1);
+}
+
+@media (max-width: 900px) {
+    .buttonGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 460px) {
+    .buttonGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
