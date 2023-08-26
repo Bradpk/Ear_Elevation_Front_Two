@@ -74,4 +74,11 @@
     .buttonGrid {
         grid-template-columns: repeat(3, 1fr);
     }
+    .stats {
+        font-size: 18px;
+        margin-top: 6px;
+    }
+    .container {
+        margin-top: 20px;
+    }
 }

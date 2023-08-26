@@ -85,5 +85,12 @@
         padding: 10px 20px;
         font-size: 16px;
     }
+    .stats {
+        font-size: 18px;
+        margin-top: 6px;
+    }
+    .container {
+        margin-top: 20px;
+    }
 }
 
