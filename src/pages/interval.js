@@ -32,6 +32,7 @@ const IntervalGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Intervals');
+    const [logButtonClicked, setLogButtonClicked] = useState(false);
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise');
     const percentage = attemptedQuestions > 0 ? Number((correctAnswers / attemptedQuestions * 100).toFixed(1)) : 0;
     const router = useRouter();
@@ -52,8 +53,10 @@ const IntervalGenerator = () => {
             .then(response => {
                 console.log('Post request successful:', response.data);
                 setLogButtonContent('Logged! Check Account For Details');
+                setLogButtonClicked(true);
                 setTimeout(() => {
                     setLogButtonContent('Log Exercise');
+                    setLogButtonClicked(false);
                 }, 1500);
             })
             .catch(error => {
@@ -184,9 +187,9 @@ return (
             <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
             <p className={styles.stats}>Percentage: {percentage}%</p>
             {state.user ? (
-                <button className={styles.logButton} onClick={handleScore}>
-                    {logButtonContent}
-                </button>
+               <button className={`${styles.logButton} ${logButtonClicked ? styles.logButtonGreen : ''}`} onClick={handleScore}>
+               {logButtonContent}
+           </button>
             ) : (
                 null
             )}

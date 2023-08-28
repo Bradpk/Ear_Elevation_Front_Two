@@ -32,6 +32,7 @@ const ScaleGenerator = () => {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [exerciseName, setExerciseName] = useState('Scales');
+    const [logButtonClicked, setLogButtonClicked] = useState(false);
     const [logButtonContent, setLogButtonContent] = useState('Log Exercise');
     const percentage = attemptedQuestions > 0 ? Number((correctAnswers / attemptedQuestions * 100).toFixed(1)) : 0;
     const router = useRouter();
@@ -53,9 +54,11 @@ const ScaleGenerator = () => {
             .then(response => {
                 console.log('Post request successful:', response.data);
                 setLogButtonContent('Logged! Check Account For Details');
+                setLogButtonClicked(true);
                 setTimeout(() => {
                     setLogButtonContent('Log Exercise');
-                }, 2000);
+                    setLogButtonClicked(false);
+                }, 1500);
             })
             .catch(error => {
                 console.error('Error posting data:', error);
@@ -172,7 +175,7 @@ const ScaleGenerator = () => {
                 break;
         }
     };
-//-----------------------------------------------------------------------------------------------------------------------------
+ //-----------------------------------------------------------------------------------------------------------------------------
     const handleScaleSelection = (scale, index) => {
         setSelectedScale(scale);
         setAttemptedQuestions(attemptedQuestions + 1);
@@ -216,8 +219,7 @@ const ScaleGenerator = () => {
                 <p className={styles.stats}>Attempted: {attemptedQuestions} | Correct: {correctAnswers}</p>
                 <p className={styles.stats}>Percentage: {percentage}%</p>
                 {state.user ? (
-
-                    <button className={styles.logButton} onClick={handleScore}>
+                    <button className={`${styles.logButton} ${logButtonClicked ? styles.logButtonGreen : ''}`} onClick={handleScore}>
                         {logButtonContent}
                     </button>
                 ) : (
