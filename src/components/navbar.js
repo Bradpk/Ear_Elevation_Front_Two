@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useState } from "react";
-import styles from './Navbar.module.css';
+import styles from './navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
