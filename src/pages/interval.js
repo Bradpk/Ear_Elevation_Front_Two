@@ -49,7 +49,7 @@ const IntervalGenerator = () => {
             percentage_correct: percentage,
             user_id: user_id
         };
-        axios.post('http://127.0.0.1:8000/api/user-logs/', data)
+        axios.post('https://optimum-harbor-397317.uk.r.appspot.com/api/user-logs/', data)
             .then(response => {
                 console.log('Post request successful:', response.data);
                 setLogButtonContent('Logged! Check Account For Details');

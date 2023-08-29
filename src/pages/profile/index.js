@@ -36,7 +36,7 @@ const ProfilePage = () => {
     try {
       console.log(state)
       const user_id = state.user.user_id
-      const response = await axios.get('http://127.0.0.1:8000/api/huh/' + user_id); 
+      const response = await axios.get('https://optimum-harbor-397317.uk.r.appspot.com/api/huh/' + user_id); 
       const newUser = state.user;
       newUser.data = response.data;
       await dispatch({
@@ -52,7 +52,7 @@ const ProfilePage = () => {
   const fetchUserLogs = async () => {
     try {
       const user_id = state.user.user_id; 
-      const response = await axios.get(`http://127.0.0.1:8000/api/user-log/${user_id}`);
+      const response = await axios.get(`https://optimum-harbor-397317.uk.r.appspot.com/api/user-log/${user_id}`);
       setUserLogs(response.data);
     } catch (error) {
       console.error('Error fetching user logs:', error);
@@ -68,7 +68,7 @@ const ProfilePage = () => {
       );
   
       await new Promise((resolve) => setTimeout(resolve, 250));
-      await axios.delete(`http://127.0.0.1:8000/api/user-logs/${logId}`);
+      await axios.delete(`https://optimum-harbor-397317.uk.r.appspot.com/api/user-logs/${logId}`);
   
       setUserLogs((prevLogs) => prevLogs.filter((log) => log.log_id !== logId));
     } catch (error) {

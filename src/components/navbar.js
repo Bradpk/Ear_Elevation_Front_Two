@@ -11,7 +11,6 @@ import { useGlobalState } from '../context/GlobalState';
 const Navbar = () => {
   const router = useRouter();
   const { state, dispatch } = useGlobalState();
-
   const [collapsed, setCollapsed] = useState(true);
 
   const handleLogout = () => {
